@@ -1,0 +1,37 @@
+User Stories - Requirements - Features
+
+- []  The users authenticate on the app with their account : email and password (login)
+- []  if the user doesn't have an account, he can sign up with the following information: username, email and password
+- [] The user can acess the sign up page trought 'link' that will open the sign up window
+- []  The user can acess the login page trought 'link' that will open the login window 
+- []  The user can acess aswell the login page through the navbar
+- []  The user can acess aswell the sign up page through the navbar
+- []  The username should be unique
+- []  The email should be unique
+- []  A logged User can acess to his profile page (regular user)
+- []  The users should have two roles: regular and admin
+- []  Only the admin can manage the categories of the recipes (add or delete categories of recipes)
+- []  Only the admin can manage the regular users
+- []  Only the admin can configure the notifications
+- []  The admin should have a list of the categories of the recipes wich should be dynamic (add or delete categories of recipes)
+- []  The regular user should have the possibility to edit his profile (change password, change avatar)
+- []  The regular user should have the possibility to delete his account on his profile page
+- []  An user should be able to add recipes to the catalog
+- []  An user should be able to delete his own recipes
+- []  A recipe should have atleast : title, preparation mode, estimated time of confection, image of the recipe, ingredients, category of the recipe (can have more than one category)
+- []  A recipe should be asscociated atleast to one category
+- []  An user can add , delete and edit his own recipes (only the owner of the recipe can edit or delete the recipe)
+- []  When the user add a recipe should be pending for approval of the admin
+- []  When the admin approve the recipe, the recipe should be available on the catalog
+- []  An user can create a list of his favorite recipes
+- []  In the user profile should be available the categories of the recipes that user most like
+- []  The user should be able to receive notifications of his favorite recipes when a new recipe is added to the catalog
+- []  The application should apresent the catalog of the recipes to the user (should apresent by default the most recent recipes)
+- []  The user should be able to filter the recipes by category
+- []  The user should be able to filter the recipes by title
+- []  The user should be able to filter the recipes by specific ingredient
+- []  The user should be able to filter the recipes by views
+- []  The catalog should be sorted by the number of views of the recipe for instance
+- []  An user can comment a recipe , by creating thread of comments (can have more than one comment of other users)
+- []  An user can like a recipe
+- []  The app should have a dashboard (painel) with the total recipes, total recipes by category
