@@ -22,6 +22,7 @@ User Stories - Requirements - Features
 - []  A recipe should be asscociated atleast to one category
 - []  An user can add , delete and edit his own recipes (only the owner of the recipe can edit or delete the recipe)
 - []  When the user add a recipe should be pending for approval of the admin
+- []  The admin should have a list with the recipes pending for approval (should be able to approve or delete the recipe)
 - []  When the admin approve the recipe, the recipe should be available on the catalog
 - []  An user can create a list of his favorite recipes
 - []  In the user profile should be available the categories of the recipes that user most like
@@ -35,3 +36,4 @@ User Stories - Requirements - Features
 - []  An user can comment a recipe , by creating thread of comments (can have more than one comment of other users)
 - []  An user can like a recipe
 - []  The app should have a dashboard (painel) with the total recipes, total recipes by category
+- []  The admin should have a list of the users of the app (should be able to block user in case of inappropriate behavior eg: bad comments, bad recipes with inappropriate content) 
