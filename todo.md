@@ -37,3 +37,5 @@ User Stories - Requirements - Features
 - []  An user can like a recipe
 - []  The app should have a dashboard (painel) with the total recipes, total recipes by category
 - []  The admin should have a list of the users of the app (should be able to block user in case of inappropriate behavior eg: bad comments, bad recipes with inappropriate content) 
+- []  A blocked user should be hable to read the guidelines of the app
+- []  A blocked user should be hable to see the blocked time (eg: 1 week, 1 month, 1 year)
