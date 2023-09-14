@@ -1,0 +1,4 @@
+id,username,email,password,role,isBlocked
+1,admin,admin@hotmail.com,admin,admin,0
+2,pedromst,pedromst@hotmail.com,123pedro,regular,0
+3,trollUser,toxic@hotmail.com,123troll,regular,1
