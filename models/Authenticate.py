@@ -2,13 +2,11 @@ from database import Database
 from classes.User import User
 
 
-def login(email, password):
+def login():
+    # login the user from the database
     db = Database()
+    
     users = db.get_users()
-    for user in users:
-        if user["email"] == email and user["password"] == password:
-            return user
-    return None
 
 
 def register(username, email, password):

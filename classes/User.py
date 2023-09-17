@@ -19,14 +19,14 @@ class User:
         self.isBlocked = isBlocked
 
     # methods
-    def add_user(self):
-        db = Database()
-        db.add_user(self)
+    # def add_user(self):
+    #     db = Database()
+    #     db.add_user(self)
     
-    def update_user(self):
-        db = Database()
-        db.update_user(self)
+    # def update_user(self):
+    #     db = Database()
+    #     db.update_user(self)
     
-    def delete_user(self):
-        db = Database()
-        db.delete_user(self)
+    # def delete_user(self):
+    #     db = Database()
+    #     db.delete_user(self)
