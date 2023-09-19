@@ -17,3 +17,5 @@ Tkinter app to manage and create recipes.
 - `File main` is the main file of the app (main.py) wich is the file that should be executed to run the app
 
 - `File database` contains all the CRUD operations logic of the app (create, read, update, delete) to manage the database.
+
+- `File utils` contains functions that are used in the app or auxiliar logic that is needed for certain parts of the app, to avoid `code repetition`.

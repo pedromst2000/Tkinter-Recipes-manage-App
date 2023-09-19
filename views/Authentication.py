@@ -1,8 +1,14 @@
 import tkinter as tk
 from tkinter import messagebox, Canvas, NW, TOP, X, Button, Frame
 from PIL import ImageTk, Image
-from models.Authenticate import login
-import re as regex
+from models.Authenticate import login, checkLoggedUserRole, checkLoggedUserIsBlocked
+from utils import checkEmail
+
+
+isLogged = False
+isAdmin = False
+isBlocked = False
+
 
 def loginView():
     # open the window
@@ -56,27 +62,64 @@ def loginView():
     labelInfo.bind("<Enter>", on_enter)
     labelInfo.bind("<Leave>", on_leave)
 
-    btnLogin = Button(loginWindow, text="Login", font=("Arial", 12, "bold"), bg="#B5960E", fg="white",  cursor="hand2", width=10, height=2)
+    btnLogin = Button(loginWindow, text="Login", font=(
+        "Arial", 12, "bold"), bg="#B5960E", fg="white",  cursor="hand2", width=10, height=2)
     # center
     btnLogin.place(x=210, y=450)
 
     btnLogin.bind("<Button-1>", lambda event: checkLogin(
-        inputEmail.get(), inputPassword.get()))
-    
+        inputEmail.get(), inputPassword.get(), loginWindow))
 
     loginWindow.grab_set()
 
 
-def checkLogin(email, password):
-   
-    # if(email == "" or password == ""):
-    #    return messagebox.showerror("Error", "Please fill all the fields")
+def checkLogin(email, password, loginWindow):
 
-    # elif(not regex.match(r"[^@]+@[^@]+\.[^@]+", email)):
-    #    return messagebox.showerror("Error", "Invalid email")
+    global isLogged
+
+    if (email == "" or password == ""):
+        return messagebox.showerror("Error", "Email and password are required")
+
+    elif (checkEmail(email) == False):
+        return messagebox.showerror("Error", "Invalid email")
+
+    # check if the user exists
+    user = login(email, password)
+
+    if (user == None):
+        messagebox.showerror("Error", "Invalid email or password")
+
+    elif (user != None):
+        messagebox.showinfo(
+            "Success", f"Welcome back Chief {user['username']}")
+
+        isLogged = True
+
+        # close the login window
+        loginWindow.destroy()
+
+        HomeView(user)
+
+
+def registerView():
+
+    print("register View")
+
+
+
+def HomeView(user):
+    global isLogged, isAdmin, isBlocked
+
+    if(isLogged == True):
+        if(checkLoggedUserRole(user["email"]) == "admin"):
+            isAdmin = True
+            print("admin logged user view")
     
+        if(checkLoggedUserRole(user["email"]) == "regular" and checkLoggedUserIsBlocked(user["email"]) == True):
+            isBlocked = True
+            print("regular logged user with blocked acess view")        
 
-    login()
 
-
-
+        elif(checkLoggedUserRole(user["email"]) == "regular"):
+            isAdmin = False
+            print("regular logged user view")

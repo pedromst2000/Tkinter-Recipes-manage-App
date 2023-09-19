@@ -3,12 +3,44 @@ from classes.User import User
 from database import *
 
 
-def login():
+def login(email, password):
 
-    db = Database(users=[]) # the class Database takes a list of users as a parameter since the constructor takes a list of users as a parameter (self, users)
+    # the class Database takes a list of users as a parameter since the constructor takes a list of users as a parameter (self, users)
+    db = Database(users=[])
     users = db.get_users()
 
-    print(users)
+    for user in users:
+        # check if the email exists
+        if user["email"] == email:
+            # check if the password is correct
+            if user["password"] == password:
+                return user
+            else:
+                return None
+
+    return None
+
+
+def checkLoggedUserRole(email):
+    db = Database(users=[])
+    users = db.get_users()
+
+    for user in users:
+        if user["email"] == email:
+            return user["role"]
+
+    return None
+
+
+def checkLoggedUserIsBlocked(email):
+    db = Database(users=[])
+    users = db.get_users()
+
+    for user in users:
+        if user["email"] == email:
+            return user["isBlocked"]
+
+    return None
 
 
 # def register(username, email, password):

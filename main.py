@@ -1,9 +1,10 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from views.Authtentication.Login import loginView
-from views.Authtentication.Register import registerView
+from views.Authentication import loginView
+from views.Authentication import loginView, registerView
 
 Window = Tk()
+
 Window.title("CraftingCook")
 Window.geometry("1280x800")
 
@@ -18,16 +19,14 @@ navbar = Frame(Window, bg="#E5B714", height=100)
 navbar.pack(side=TOP, fill=X)
 
 # btn Login
-btnLogin = Button(navbar, text="Login", font=("Arial", 12, "bold"), bg="#B5960E", fg="white",  cursor="hand2", width=10, height=2
-                    , activebackground="#D1A711", activeforeground="#ffffff", bd=0 , command=loginView
+btnLogin = Button(navbar, text="Login", font=("Arial", 12, "bold"), bg="#B5960E", fg="white",  cursor="hand2", width=10, height=2, activebackground="#D1A711", activeforeground="#ffffff", bd=0, command=loginView
                   )
 btnLogin.place(x=1000, y=25)
 
 
 # btn Register
-btnRegister = Button(navbar, text="Register", font=("Arial", 12, "bold"), bg="#B5960E", fg="white",  cursor="hand2", width=10, height=2
-                    , activebackground="#D1A711", activeforeground="#ffffff" , bd=0, command=registerView
-                    )
+btnRegister = Button(navbar, text="Register", font=("Arial", 12, "bold"), bg="#B5960E", fg="white",  cursor="hand2", width=10, height=2, activebackground="#D1A711", activeforeground="#ffffff", bd=0, command=registerView
+                     )
 btnRegister.place(x=1140, y=25)
 
 # canvas
@@ -41,5 +40,6 @@ image = image.resize((1280, 760))
 image = ImageTk.PhotoImage(image)
 
 canvasMain.create_image(0, 0, anchor=NW, image=image)
+
 
 Window.mainloop()

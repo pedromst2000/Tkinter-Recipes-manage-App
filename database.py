@@ -37,6 +37,7 @@ class Database:
                 "isBlocked": (user[5]).strip("\n").replace(" ", "") == "true" # to check if the user is blocked or not 
             })
 
+    
     # to check the type of the data in the list 
         # print(
         #     type(self.users[0]["id"]),
