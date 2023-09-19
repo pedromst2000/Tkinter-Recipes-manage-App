@@ -1,0 +1,3 @@
+1;admin;admin@hotmail.com;admin;admin;false
+2;pedromst;pedromst@hotmail.com;123pedro;regular;false
+3;trollUser;toxic@hotmail.com;123troll;regular;true

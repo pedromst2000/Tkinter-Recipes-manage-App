@@ -7,7 +7,7 @@ Tkinter app to manage and create recipes.
 
 - `Folder models` contains all the CRUD operations logic of the app (create, read, update, delete) through the communication between the classes and the database.
 
-- `Folder database` contains the csv files that are used to store the data of the app.
+- `Folder database` contains the txt files that are used to store the data of the app.
 
 - `Folder assets` contains the icon and the images of the app
 

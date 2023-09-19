@@ -9,7 +9,7 @@ User Stories - Requirements - Features
 - []  The username should be unique
 - []  The email should be unique
 - []  A logged User can acess to his profile page (regular user)
-- []  The users should have two roles: regular and admin
+- [x]  The users should have two roles: regular and admin
 - []  Only the admin can manage the categories of the recipes (add or delete categories of recipes)
 - []  Only the admin can manage the regular users
 - []  Only the admin can configure the notifications

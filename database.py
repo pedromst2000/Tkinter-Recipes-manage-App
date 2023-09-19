@@ -1,68 +1,51 @@
-import csv
-import os
-from typing import Optional, Any, Dict
-
-DELIMITER = ";"
-
-USERS_FIELDS = ["username", "email", "password", "role", "isBlocked"]
-USERS_CSV_PATH = os.path.join(os.path.dirname(
-    __file__),  "database", "users.csv")
-
-
-# THERE ARE ONLY THE USERS METHODS FOR NOW !!
-
 class Database:
 
-    def __init__(self):
-        pass
+    users = []
+    # recipes = []
+    # favorites = []
+    # comments = []
 
-    def get_users(self) -> list:
-        users = []
-        with open(USERS_CSV_PATH, "r") as users_csv:
-            reader = csv.DictReader(users_csv, delimiter=DELIMITER)
-            for row in reader:
-                users.append(row)
-        return users
+# constructor
+    def __init__(self, 
+                 users, 
+                #  recipes, 
+                #  favorites,
+                #    comments
+                 ):
+        self.users = users
+        # self.recipes = recipes
+        # self.favorites = favorites
+        # self.comments = comments
 
-    def get_user(self, email: str) -> Optional[Dict[str, Any]]:
-        users = self.get_users()
-        for user in users:
-            if user["email"] == email:
-                return user
-        return None
+# methods
+    def get_users(self):
 
-    def add_user(self, user: Dict[str, Any]) -> None:
-        with open(USERS_CSV_PATH, "a") as users_csv:
-            writer = csv.DictWriter(
-                users_csv, fieldnames=USERS_FIELDS, delimiter=DELIMITER)
-            writer.writerow(user)
+        file = open("database/users.txt", "r", encoding="utf-8")
 
-    def update_user(self, user: Dict[str, Any]) -> None:
-        users = self.get_users()
-        for index, _user in enumerate(users):
-            if _user["email"] == user["email"]:
-                users[index] = user
-                break
-        with open(USERS_CSV_PATH, "w") as users_csv:
-            writer = csv.DictWriter(
-                users_csv, fieldnames=USERS_FIELDS, delimiter=DELIMITER)
-            writer.writeheader()
-            writer.writerows(users)
+        lines = file.readlines()
 
-    def delete_user(self, user: Dict[str, Any]) -> None:
-        users = self.get_users()
-        for index, _user in enumerate(users):
-            if _user["email"] == user["email"]:
-                del users[index]
-                break
-        with open(USERS_CSV_PATH, "w") as users_csv:
-            writer = csv.DictWriter(
-                users_csv, fieldnames=USERS_FIELDS, delimiter=DELIMITER)
-            writer.writeheader()
-            writer.writerows(users)
+        file.close()
 
+        for line in lines:
+            user = line.split(";")
+            self.users.append({
+                "id": int(user[0]),
+                "username": user[1],
+                "email": user[2],
+                "password": user[3],
+                "role": user[4],
+                "isBlocked": (user[5]).strip("\n").replace(" ", "") == "true" # to check if the user is blocked or not 
+            })
+
+    # to check the type of the data in the list 
+        # print(
+        #     type(self.users[0]["id"]),
+        #     type(self.users[0]["username"]),
+        #     type(self.users[0]["email"]),
+        #     type(self.users[0]["password"]),
+        #     type(self.users[0]["role"]),
+        #     type(self.users[0]["isBlocked"])
+        # )
+
+        return self.users
     
-
-    
-
-

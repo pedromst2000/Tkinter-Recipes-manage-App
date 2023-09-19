@@ -69,11 +69,11 @@ def loginView():
 
 def checkLogin(email, password):
    
-    if(email == "" or password == ""):
-       return messagebox.showerror("Error", "Please fill all the fields")
+    # if(email == "" or password == ""):
+    #    return messagebox.showerror("Error", "Please fill all the fields")
 
-    elif(not regex.match(r"[^@]+@[^@]+\.[^@]+", email)):
-       return messagebox.showerror("Error", "Invalid email")
+    # elif(not regex.match(r"[^@]+@[^@]+\.[^@]+", email)):
+    #    return messagebox.showerror("Error", "Invalid email")
     
 
     login()
