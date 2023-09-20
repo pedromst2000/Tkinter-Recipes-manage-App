@@ -1,6 +1,5 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from views.Authentication import loginView
 from views.Authentication import loginView, registerView
 
 Window = Tk()

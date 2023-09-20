@@ -1,13 +1,11 @@
 import tkinter as tk
 from tkinter import messagebox, Canvas, NW, TOP, X, Button, Frame
 from PIL import ImageTk, Image
-from models.Authenticate import login, checkLoggedUserRole, checkLoggedUserIsBlocked
+from models.Authenticate import login
 from utils import checkEmail
-
+from views.Home import HomeView
 
 isLogged = False
-isAdmin = False
-isBlocked = False
 
 
 def loginView():
@@ -75,7 +73,7 @@ def loginView():
 
 def checkLogin(email, password, loginWindow):
 
-    global isLogged
+    global isLogged, isAdmin, isBlocked
 
     if (email == "" or password == ""):
         return messagebox.showerror("Error", "Email and password are required")
@@ -95,10 +93,9 @@ def checkLogin(email, password, loginWindow):
 
         isLogged = True
 
-        # close the login window
         loginWindow.destroy()
 
-        HomeView(user)
+        HomeView(user, isLogged)
 
 
 def registerView():
@@ -106,20 +103,3 @@ def registerView():
     print("register View")
 
 
-
-def HomeView(user):
-    global isLogged, isAdmin, isBlocked
-
-    if(isLogged == True):
-        if(checkLoggedUserRole(user["email"]) == "admin"):
-            isAdmin = True
-            print("admin logged user view")
-    
-        if(checkLoggedUserRole(user["email"]) == "regular" and checkLoggedUserIsBlocked(user["email"]) == True):
-            isBlocked = True
-            print("regular logged user with blocked acess view")        
-
-
-        elif(checkLoggedUserRole(user["email"]) == "regular"):
-            isAdmin = False
-            print("regular logged user view")

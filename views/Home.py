@@ -1,17 +1,17 @@
 import tkinter as tk
 from tkinter import *
 from PIL import ImageTk, Image
+from models.Authenticate import checkLoggedUserRole, checkLoggedUserIsBlocked
 
 
-# def HomeView():
-
-#     global isLogged
-
-#     if isLogged == True :
-#         print("logged")
-
+def HomeView(user, isLogged):
     
+    if (isLogged == True):
+        if (checkLoggedUserRole(user["email"]) == "admin"):
+            print("admin logged user view") 
 
-    # navbar
-    # navbar = Frame(Window, bg="#E5B714", height=100)
-    # navbar.pack(side=TOP, fill=X)
+        if (checkLoggedUserRole(user["email"]) == "regular" and checkLoggedUserIsBlocked(user["email"]) == True):
+            print("regular logged user with blocked acess view")
+
+        elif (checkLoggedUserRole(user["email"]) == "regular"):
+            print("regular logged user view")

@@ -21,26 +21,27 @@ def login(email, password):
     return None
 
 
+# this function will check the logged user role 
 def checkLoggedUserRole(email):
-    db = Database(users=[])
+    db = Database(users=[]) 
     users = db.get_users()
 
     for user in users:
-        if user["email"] == email:
-            return user["role"]
+        if user["email"] == email: # if the email exists in the database
+            return user["role"] # return the role of the user
 
-    return None
+    return None # if the email doesn't exist in the database, return None
 
-
+# this function will check if the logged user is blocked
 def checkLoggedUserIsBlocked(email):
     db = Database(users=[])
     users = db.get_users()
 
     for user in users:
-        if user["email"] == email:
-            return user["isBlocked"]
+        if user["email"] == email: # if the email exists in the database
+            return user["isBlocked"] # return the isBlocked value of the user
 
-    return None
+    return None # if the email doesn't exist in the database, return None
 
 
 # def register(username, email, password):
