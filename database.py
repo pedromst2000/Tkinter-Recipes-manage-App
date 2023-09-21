@@ -34,7 +34,8 @@ class Database:
                 "email": user[2],
                 "password": user[3],
                 "role": user[4],
-                "isBlocked": (user[5]).strip("\n").replace(" ", "") == "true" # to check if the user is blocked or not 
+                "avatar": user[5],
+                "isBlocked": (user[6]).strip("\n").replace(" ", "") == "true" # to check if the user is blocked or not 
             })
 
     
@@ -50,3 +51,11 @@ class Database:
 
         return self.users
     
+    def create_user(self, user): # add a new user to the database
+        file = open("database/users.txt", "a", encoding="utf-8")
+
+        file.write(f"{user['id']};{user['username']};{user['email']};{user['password']};{user['role']};{user['avatar']};{user['isBlocked']}\n")
+
+        file.close()
+
+

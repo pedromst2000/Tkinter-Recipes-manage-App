@@ -1,4 +1,5 @@
 import re as regex
+from PIL import ImageTk, Image
 
 def checkEmail(email):
 
@@ -6,4 +7,3 @@ def checkEmail(email):
         return False
 
     return True
-

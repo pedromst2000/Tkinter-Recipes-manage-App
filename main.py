@@ -22,7 +22,6 @@ btnLogin = Button(navbar, text="Login", font=("Arial", 12, "bold"), bg="#B5960E"
                   )
 btnLogin.place(x=1000, y=25)
 
-
 # btn Register
 btnRegister = Button(navbar, text="Register", font=("Arial", 12, "bold"), bg="#B5960E", fg="white",  cursor="hand2", width=10, height=2, activebackground="#D1A711", activeforeground="#ffffff", bd=0, command=registerView
                      )

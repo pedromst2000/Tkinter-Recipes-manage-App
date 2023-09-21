@@ -7,21 +7,23 @@ class User:
     email = ""
     password = ""
     role = ""
+    avatar = ""
     isBlocked = False
 
 
     # constructor
-    def __init__(self, username, email, password, role, isBlocked):
+    def __init__(self, username, email, password, role, avatar, isBlocked):
         self.username = username
         self.email = email
         self.password = password
         self.role = role
+        self.avatar = avatar
         self.isBlocked = isBlocked
 
     # methods
-    # def add_user(self):
-    #     db = Database()
-    #     db.add_user(self)
+    def add_user(self):
+        db = Database()
+        db.create_user(self)
     
     # def update_user(self):
     #     db = Database()

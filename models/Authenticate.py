@@ -16,9 +16,9 @@ def login(email, password):
             if user["password"] == password:
                 return user
             else:
-                return None
-
-    return None
+                return None # if the password is incorrect, return None
+ 
+    return None # if the email doesn't exist, return None
 
 
 # this function will check the logged user role 
@@ -44,28 +44,21 @@ def checkLoggedUserIsBlocked(email):
     return None # if the email doesn't exist in the database, return None
 
 
-# def register(username, email, password):
-#     # register the user in the database with the role by default "regular"
-#     db = Database()
-#     user = {
-#         "username": username,
-#         "email": email,
-#         "password": password,
-#         "role": "regular",
-#         "isBlocked": False
-#     }
 
-#     # check if the user already exists
-#     # if the user exists, return None
-#     users = db.get_users()
-#     for user in users:
-#         if user["email"] == email:
-#             return None
+def register(username, email, password):
+    
+        db = Database(users=[])
+        users = db.get_users()
+    
+        for user in users:
+            if user["email"] == email:  # check if the email already exists
 
-#         if user["username"] == username:
-#             return None
-
-#     # add the instance of the user to the database
-#     User(username, email, password, "regular", False).add_user()
-
-#     return user
+                return False
+            if user["username"] == username: # check if the username already exists
+                return False
+    
+        # if the email and the username doesn't exist, create the user
+        user = User(username, email, password, "regular", False)
+        user.add_user()
+    
+        return True # return True if the user was created successfully
