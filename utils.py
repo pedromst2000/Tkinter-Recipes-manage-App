@@ -16,7 +16,6 @@ def checkEmail(email):
 
     return True # if match the pattern, return True
 
-
 def hidePasswordIcon(ImageTk, Image, canvasManagePassword, NW, X, Y):
     eye = Image.open("assets/images/hidden_password.png")
 
@@ -78,3 +77,17 @@ def manageVisibility(ImageTk, Image, canvasManagePassword, NW, inputPassword, X,
             )
     else:
         canvasManagePassword.place_forget() # if the password input is empty, the canvas will be hidden and not showing any icon (either hide or show password icon)
+
+# to increment the id of the new user that will be added to the database
+def increment_id():
+    file = open("database/users.txt", "r", encoding="utf-8")
+
+    lines = file.readlines()
+
+    file.close()
+
+    last_line = lines[len(lines) - 1]
+
+    last_line = last_line.split(";")
+
+    return int(last_line[0]) + 1

@@ -1,3 +1,5 @@
+from utils import increment_id
+
 class Database:
 
     users = []
@@ -6,11 +8,11 @@ class Database:
     # comments = []
 
 # constructor
-    def __init__(self, 
-                 users, 
-                #  recipes, 
-                #  favorites,
-                #    comments
+    def __init__(self,
+                 users,
+                 #  recipes,
+                 #  favorites,
+                 #    comments
                  ):
         self.users = users
         # self.recipes = recipes
@@ -24,8 +26,6 @@ class Database:
 
         lines = file.readlines()
 
-        file.close()
-
         for line in lines:
             user = line.split(";")
             self.users.append({
@@ -35,27 +35,33 @@ class Database:
                 "password": user[3],
                 "role": user[4],
                 "avatar": user[5],
-                "isBlocked": (user[6]).strip("\n").replace(" ", "") == "true" # to check if the user is blocked or not 
+                # to check if the user is blocked or not
+                "isBlocked": (user[6]).strip("\n").replace(" ", "") == "True"
             })
 
-    
-    # to check the type of the data in the list 
+
+        file.close()
+
+        return self.users
+
+      
+
+    # to check the type of the data in the list
         # print(
         #     type(self.users[0]["id"]),
         #     type(self.users[0]["username"]),
         #     type(self.users[0]["email"]),
         #     type(self.users[0]["password"]),
         #     type(self.users[0]["role"]),
+        #     type(self.users[0]["avatar"]),
         #     type(self.users[0]["isBlocked"])
         # )
 
-        return self.users
-    
-    def create_user(self, user): # add a new user to the database
+      
+    def create_user(self, user):  # add a new user to the database
         file = open("database/users.txt", "a", encoding="utf-8")
 
-        file.write(f"{user['id']};{user['username']};{user['email']};{user['password']};{user['role']};{user['avatar']};{user['isBlocked']}\n")
+        file.write(
+            f"\n{increment_id()};{user.username};{user.email};{user.password};{user.role};{user.avatar};{user.isBlocked}")
 
         file.close()
-
-

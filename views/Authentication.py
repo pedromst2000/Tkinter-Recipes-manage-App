@@ -1,13 +1,13 @@
 import tkinter as tk
 from tkinter import messagebox, Canvas, NW, TOP, X, Button, Frame
 from PIL import ImageTk, Image
-from models.Authenticate import login
+from models.Authenticate import login, register, checkRegisterUsername, checkRegisterEmail
 from utils import checkEmail, togglePasswordVisibility, manageVisibility
 from views.Home import HomeView
 
 # global variable
 isLogged = False  # this variable will be used to check if the user is logged or not
-# this variable will be used to check if the password is visible or not
+isRegister = False  # this variable will be used to check if the user is registering or not
 
 def loginView():
     # open the window
@@ -79,6 +79,8 @@ def loginView():
     labelInfo.bind("<Enter>", on_enter)
     labelInfo.bind("<Leave>", on_leave) # when the user leaves the label, the function will be called
 
+    labelInfo.bind("<Button-1>", lambda event: openSignUpLink(event, loginWindow))
+
     btnLogin = Button(loginWindow, text="Login", font=(
         "Arial", 12, "bold"), bg="#B5960E", fg="white",  cursor="hand2", width=10, height=2)
     # center
@@ -93,7 +95,7 @@ def loginView():
 
 def checkLogin(email, password, loginWindow):
 
-    global isLogged
+    global isLogged, isRegister
 
     if (email == "" or password == ""):
         return messagebox.showerror("Error", "Email and password are required")
@@ -111,11 +113,12 @@ def checkLogin(email, password, loginWindow):
             "Success", f"Welcome back Chief {user['username']}")
 
         isLogged = True
+        isRegister = False
 
         loginWindow.destroy() # destroy the login window
 
         # the Home view will be different depending on the state of the logged user (role, isBlocked)
-        HomeView(user, isLogged)
+        HomeView(user, isLogged, isRegister)
 
 
 def registerView():
@@ -179,11 +182,11 @@ def registerView():
     canvasManagePassword.config(highlightthickness=0, bd=0, bg="#806B14")
     
     canvasManagePassword.bind("<Button-1>", lambda event: togglePasswordVisibility(
-        ImageTk, Image, canvasManagePassword, NW, inputPassword, 435, 400
+        ImageTk, Image, canvasManagePassword, NW, inputPassword, 435, 398
     ))
 
     inputPassword.bind("<KeyRelease>", lambda event: manageVisibility(
-        ImageTk, Image, canvasManagePassword, NW, inputPassword, 435, 400
+        ImageTk, Image, canvasManagePassword, NW, inputPassword, 435, 398
     ))
 
     labelInfo = tk.Label(registerWindow, text="Already have an account? Sign In", font=(
@@ -200,13 +203,57 @@ def registerView():
     labelInfo.bind("<Enter>", on_enter)
     labelInfo.bind("<Leave>", on_leave)
 
+    labelInfo.bind("<Button-1>", lambda event: openSignInLink(event, registerWindow))
+
     btnRegister = Button(registerWindow, text="Register", font=(
         "Arial", 12, "bold"), bg="#B5960E", fg="white",  cursor="hand2", width=10, height=2)
     # center
     btnRegister.place(x=210, y=570)
 
-    # btnRegister.bind("<Button-1>", lambda event: checkLogin(
-    #     inputEmail.get(), inputPassword.get(), registerWindow))
+    btnRegister.bind("<Button-1>", lambda event: checkRegister(
+        inputUsername.get(), inputEmail.get(), inputPassword.get(), inputConfirmPassword.get(), registerWindow))
 
 
 
+def checkRegister(username, email, password, confirmPassword, registerWindow):
+    
+    global isLogged, isRegister
+
+    if (username == "" or email == "" or password == "" or confirmPassword == ""):
+        return messagebox.showerror("Error", "All fields are required")
+
+    # check if the username already exists
+    elif (checkRegisterUsername(username) == False):
+        return messagebox.showerror("Error", "Username already exists")
+    
+    elif(checkEmail(email) == False):
+        return messagebox.showerror("Error", "Invalid email")
+    
+    # check if the email already exists
+    elif (checkRegisterEmail(email) == False):
+        return messagebox.showerror("Error", "Email already exists")
+    
+    elif (password != confirmPassword):
+        return messagebox.showerror("Error", "Passwords don't match")
+    
+    else :
+        user = register(username, email, password)
+
+        if (user == True): # if the register function returns True will add the user to the database
+            messagebox.showinfo("Success", f"We're glad you join our family Chief {username}")
+
+            isLogged = True
+            isRegister = True
+
+            registerWindow.destroy()
+
+            HomeView(user, isLogged, isRegister)
+
+
+def openSignUpLink(event, loginWindow):
+    loginWindow.destroy()
+    registerView()
+
+def openSignInLink(event, registerWindow):
+    registerWindow.destroy()
+    loginView()

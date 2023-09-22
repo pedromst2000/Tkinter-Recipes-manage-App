@@ -3,16 +3,16 @@ User Stories - Requirements - Features
 -- to be done in the next commits
 
 - [X]  The users authenticate on the app with their account : email and password (login)
-- []  if the user doesn't have an account, he can sign up with the following information: username, email and password --
-- [] The user can acess the sign up page trought 'link' that will open the sign up window and close the login window --
-- []  The user can acess the login page trought 'link' that will open the login window and close the sign up window --
+- [X]  if the user doesn't have an account, he can sign up with the following information: username, email and password 
+- [X] The user can acess the sign up page trought 'link' that will open the sign up window and close the login window 
+- [X]  The user can acess the login page trought 'link' that will open the login window and close the sign up window 
 - [X]  The user can acess aswell the login page through the navbar
 - [X]  The user can acess aswell the sign up page through the navbar
-- []  The username should be unique --
-- []  The email should be unique --
-- [X]  In the login or in the register the password field should have hidden or visible password option --
-- []  New user should have dummy profile picture 
-- []  A logged User can acess to his profile page (regular user)
+- [X]  The username should be unique
+- [X]  The email should be unique
+- [X]  In the login or in the register the password field should have hidden or visible password option
+- []  New user should have dummy profile picture -- 
+- []  A logged User can acess to his profile page (regular user) --
 - [X]  The users should have two roles: regular and admin
 - []  Only the admin can manage the categories of the recipes (add or delete categories of recipes)
 - []  Only the admin can manage the regular users

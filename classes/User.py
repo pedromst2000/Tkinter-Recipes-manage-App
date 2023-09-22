@@ -22,7 +22,7 @@ class User:
 
     # methods
     def add_user(self):
-        db = Database()
+        db = Database(users=[]) 
         db.create_user(self)
     
     # def update_user(self):
