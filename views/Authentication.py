@@ -2,14 +2,12 @@ import tkinter as tk
 from tkinter import messagebox, Canvas, NW, TOP, X, Button, Frame
 from PIL import ImageTk, Image
 from models.Authenticate import login
-from utils import checkEmail
+from utils import checkEmail, togglePasswordVisibility, manageVisibility
 from views.Home import HomeView
 
 # global variable
 isLogged = False  # this variable will be used to check if the user is logged or not
 # this variable will be used to check if the password is visible or not
-isPasswordVisible = False
-
 
 def loginView():
     # open the window
@@ -49,46 +47,21 @@ def loginView():
         "Arial", 11, "bold"), bg="white", fg="#806B14", bd=0, show="*")
     inputPassword.place(x=120, y=350)
 
-    canvasManagePassword = Canvas(loginWindow,  height=20,
-                                  width=80, highlightthickness=0, cursor="hand2", bg="white")
+    canvasManagePassword = Canvas(loginWindow,  height=26,
+                                  width=40, highlightthickness=0, cursor="hand2")
+    
+    canvasManagePassword.config(highlightthickness=0, bd=0, bg="#806B14")
 
+ 
+    # bind - when the user clicks (onClick) on the canvas, the function will be called
+    canvasManagePassword.bind("<Button-1>", lambda event: togglePasswordVisibility(
+        ImageTk, Image, canvasManagePassword, NW, inputPassword, 435, 348
+    ))
 
-    def managePassword():
-
-        global isPasswordVisible
-
-        if(inputPassword.get() != "" or isPasswordVisible == False):
-            
-            eye = Image.open("assets/images/hidden_password.png")
-
-            eye = eye.resize((20, 20))
-
-            canvasManagePassword.image = ImageTk.PhotoImage(eye)
-
-            canvasManagePassword.create_image(
-                0, 0, anchor=NW, image=canvasManagePassword.image)
-            
-            canvasManagePassword.place(x=450, y=350)
-        
-        elif(inputPassword.get() != "" or isPasswordVisible == True):
-            
-            eye = Image.open("assets/images/visible_password.png")
-
-            eye = eye.resize((20, 20))
-
-            canvasManagePassword.image = ImageTk.PhotoImage(eye)
-
-            canvasManagePassword.create_image(
-                0, 0, anchor=NW, image=canvasManagePassword.image)
-            
-            canvasManagePassword.place(x=450, y=350)
-
-        else:
-            canvasManagePassword.place_forget()
-
-
-    inputPassword.bind("<KeyRelease>", lambda event: managePassword())
-
+    # bind - when the user releases the key (onKeyPress), the function will be called
+    inputPassword.bind("<KeyRelease>", lambda event: manageVisibility(
+        ImageTk, Image, canvasManagePassword, NW, inputPassword, 435, 348
+    ))
 
 
     labelInfo = tk.Label(loginWindow, text="Don't have an account? Sign up", font=(
@@ -96,25 +69,26 @@ def loginView():
     labelInfo.place(x=155, y=400)
 
     # on mouse hover in and out underline the text
-
     def on_enter(e):
         labelInfo.config(font=("Arial", 12, "underline"))
 
     def on_leave(e):
         labelInfo.config(font=("Arial", 12))
 
+    # bind - when the user hovers the mouse on the label, the function will be called
     labelInfo.bind("<Enter>", on_enter)
-    labelInfo.bind("<Leave>", on_leave)
+    labelInfo.bind("<Leave>", on_leave) # when the user leaves the label, the function will be called
 
     btnLogin = Button(loginWindow, text="Login", font=(
         "Arial", 12, "bold"), bg="#B5960E", fg="white",  cursor="hand2", width=10, height=2)
     # center
     btnLogin.place(x=210, y=450)
 
+    # bind - when the user clicks (onClick) on the button, will trigger checkLogin function
     btnLogin.bind("<Button-1>", lambda event: checkLogin(
         inputEmail.get(), inputPassword.get(), loginWindow))
 
-    loginWindow.grab_set()
+    loginWindow.grab_set() # to block the main window
 
 
 def checkLogin(email, password, loginWindow):
@@ -124,22 +98,21 @@ def checkLogin(email, password, loginWindow):
     if (email == "" or password == ""):
         return messagebox.showerror("Error", "Email and password are required")
 
-    elif (checkEmail(email) == False):
+    elif (checkEmail(email) == False): # checking with the util function if the email is valid
         return messagebox.showerror("Error", "Invalid email")
 
-    # check if the user exists
-    user = login(email, password)
+    user = login(email, password) # this function returns the user if the email and password are correct, otherwise returns None
 
-    if (user == None):
+    if (user == None): # if the user doesn't exist
         messagebox.showerror("Error", "Invalid Credentials")
 
-    elif (user != None):
+    elif (user != None): # if the user exists
         messagebox.showinfo(
             "Success", f"Welcome back Chief {user['username']}")
 
         isLogged = True
 
-        loginWindow.destroy()
+        loginWindow.destroy() # destroy the login window
 
         # the Home view will be different depending on the state of the logged user (role, isBlocked)
         HomeView(user, isLogged)
@@ -199,6 +172,19 @@ def registerView():
     inputConfirmPassword = tk.Entry(registerWindow, width=38, font=(
         "Arial", 11, "bold"), bg="white", fg="#806B14", bd=0, show="*")
     inputConfirmPassword.place(x=120, y=470)
+
+    canvasManagePassword = Canvas(registerWindow,  height=26,
+                                  width=40, highlightthickness=0, cursor="hand2")
+    
+    canvasManagePassword.config(highlightthickness=0, bd=0, bg="#806B14")
+    
+    canvasManagePassword.bind("<Button-1>", lambda event: togglePasswordVisibility(
+        ImageTk, Image, canvasManagePassword, NW, inputPassword, 435, 400
+    ))
+
+    inputPassword.bind("<KeyRelease>", lambda event: manageVisibility(
+        ImageTk, Image, canvasManagePassword, NW, inputPassword, 435, 400
+    ))
 
     labelInfo = tk.Label(registerWindow, text="Already have an account? Sign In", font=(
         "Arial", 12), bg="#806B14", fg="white", cursor="hand2")

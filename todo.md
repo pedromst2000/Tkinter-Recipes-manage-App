@@ -10,7 +10,7 @@ User Stories - Requirements - Features
 - [X]  The user can acess aswell the sign up page through the navbar
 - []  The username should be unique --
 - []  The email should be unique --
-- []  In the login or in the register the password field should have hidden or visible password option --
+- [X]  In the login or in the register the password field should have hidden or visible password option --
 - []  New user should have dummy profile picture 
 - []  A logged User can acess to his profile page (regular user)
 - [X]  The users should have two roles: regular and admin
