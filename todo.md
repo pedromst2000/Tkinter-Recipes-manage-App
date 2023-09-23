@@ -2,6 +2,8 @@ User Stories - Requirements - Features
 
 -- to be done in the next commits
 
+=> get the register user info
+
 - [X]  The users authenticate on the app with their account : email and password (login)
 - [X]  if the user doesn't have an account, he can sign up with the following information: username, email and password 
 - [X] The user can acess the sign up page trought 'link' that will open the sign up window and close the login window 

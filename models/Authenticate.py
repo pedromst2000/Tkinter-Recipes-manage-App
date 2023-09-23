@@ -21,7 +21,6 @@ def login(email, password):
     return None  # if the email doesn't exist, return None
 
 
-# this function will check the logged user role
 def checkLoggedUserRole(email):
     db = Database(users=[])
     users = db.get_users()
@@ -31,10 +30,6 @@ def checkLoggedUserRole(email):
             return user["role"]  # return the role of the user
 
     return None  # if the email doesn't exist in the database, return None
-
-
-
-# this function will check if the logged user is blocked
 
 
 def checkLoggedUserIsBlocked(email):
@@ -55,7 +50,7 @@ def register(username, email, password):
     user = User(username, email, password, "regular",
                 "assets/images/avatar_profile_placeholder.jpg",
                 False)
-    user.add_user()
+    user.add_user() # add new instance of the user to the database
 
     return True  # return True if the user was created successfully
 
@@ -77,6 +72,7 @@ def checkRegisterUsername(username):
 
 
 def checkRegisterEmail(email):
+
     db = Database(users=[])
     users = db.get_users()
 

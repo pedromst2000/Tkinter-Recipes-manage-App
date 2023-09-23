@@ -1,3 +1,4 @@
 1;admin;admin@hotmail.com;admin;admin;assets/images/avatar_profile_placeholder.jpg;False
 2;pedromst;pedromst@hotmail.com;123pedro;regular;assets/images/avatar_profile_placeholder.jpg;False
 3;trollUser;toxic@hotmail.com;123troll;regular;assets/images/avatar_profile_placeholder.jpg;True
+4;pedroT;pedroT@hotmail.com;123;regular;assets/images/avatar_profile_placeholder.jpg;False

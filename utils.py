@@ -80,14 +80,16 @@ def manageVisibility(ImageTk, Image, canvasManagePassword, NW, inputPassword, X,
 
 # to increment the id of the new user that will be added to the database
 def increment_id():
+    
     file = open("database/users.txt", "r", encoding="utf-8")
 
     lines = file.readlines()
 
     file.close()
 
-    last_line = lines[len(lines) - 1]
+    last_line = lines[len(lines) - 1] # get the last line of the file
 
-    last_line = last_line.split(";")
+    last_line = last_line.split(";") # split the last line by the semicolon
+ 
+    return int(last_line[0]) + 1 # return the id incremented by 1
 
-    return int(last_line[0]) + 1
