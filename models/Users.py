@@ -90,3 +90,14 @@ def checkRegisterEmail(email):
             return False
 
     return True  # if the email is unique, return True
+
+
+def get_user(email):
+    db = Database(users=[])
+    users = db.get_users()
+
+    for user in users:
+        if user["email"] == email:
+            return user
+
+    return None

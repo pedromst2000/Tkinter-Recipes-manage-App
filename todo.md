@@ -2,7 +2,9 @@ User Stories - Requirements - Features
 
 -- to be done in the next commits
 
-=> get the register user info
+=> make navbar reusable 'component' with util function - refactor code
+=> make the home view render conditionally - refactor code
+=> work on the profile page
 
 - [X]  The users authenticate on the app with their account : email and password (login)
 - [X]  if the user doesn't have an account, he can sign up with the following information: username, email and password 
@@ -13,7 +15,7 @@ User Stories - Requirements - Features
 - [X]  The username should be unique
 - [X]  The email should be unique
 - [X]  In the login or in the register the password field should have hidden or visible password option
-- []  New user should have dummy profile picture -- 
+- [X]  New user should have dummy profile picture
 - []  A logged User can acess to his profile page (regular user) --
 - [X]  The users should have two roles: regular and admin
 - []  Only the admin can manage the categories of the recipes (add or delete categories of recipes)

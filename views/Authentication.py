@@ -1,13 +1,13 @@
 import tkinter as tk
 from tkinter import messagebox, Canvas, NW, TOP, X, Button, Frame
 from PIL import ImageTk, Image
-from models.Authenticate import login, register, checkRegisterUsername, checkRegisterEmail
-from utils import checkEmail, togglePasswordVisibility, manageVisibility
+from models.Users import login, register, checkRegisterUsername, checkRegisterEmail, get_user
+from utils import checkEmail, togglePasswordVisibility, manageVisibility, checkUsername
 from views.Home import HomeView
 
 # global variable
 isLogged = False  # this variable will be used to check if the user is logged or not
-isRegister = False  # this variable will be used to check if the user is registering or not
+isNewUser = False  # this variable will be used to check if the user is registering or not
 
 
 def loginView(Window):
@@ -25,7 +25,7 @@ def loginView(Window):
     # center
     canvasLogin.place(x=200, y=50)
 
-    login_image = Image.open("assets/images/auth_image.png")
+    login_image = Image.open("assets/images/Authentication/auth_image.png")
     login_image = login_image.resize((180, 160))
 
     canvasLogin.image = ImageTk.PhotoImage(login_image)
@@ -96,7 +96,7 @@ def loginView(Window):
 
 def checkLogin(email, password, loginWindow, Window):
 
-    global isLogged, isRegister
+    global isLogged, isNewUser
 
     if (email == "" or password == ""):
         return messagebox.showerror("Error", "Email and password are required")
@@ -115,13 +115,13 @@ def checkLogin(email, password, loginWindow, Window):
             "Success", f"Welcome back Chief {user['username']}")
 
         isLogged = True
-        isRegister = False
+        isNewUser = False
 
         loginWindow.destroy()  # destroy the login window
 
         # the Home view will be different depending on the state of the logged user (role, isBlocked)
         Window.destroy()
-        HomeView(user, isLogged, isRegister)
+        HomeView(user, isLogged, isNewUser)
 
 
 def registerView(Window):
@@ -140,7 +140,7 @@ def registerView(Window):
     # center
     canvasRegister.place(x=200, y=50)
 
-    register_image = Image.open("assets/images/auth_image.png")
+    register_image = Image.open("assets/images/Authentication/auth_image.png")
     register_image = register_image.resize((180, 160))
 
     canvasRegister.image = ImageTk.PhotoImage(register_image)
@@ -220,10 +220,14 @@ def registerView(Window):
 
 def checkRegister(username, email, password, confirmPassword, registerWindow, Window):
 
-    global isLogged, isRegister
+    global isLogged, isNewUser
 
     if (username == "" or email == "" or password == "" or confirmPassword == ""):
         return messagebox.showerror("Error", "All fields are required")
+
+    # check if the username is valid
+    elif (checkUsername(username) == False):
+        return messagebox.showerror("Error", "Invalid username")
 
     # check if the username already exists
     elif (checkRegisterUsername(username) == False):
@@ -240,19 +244,20 @@ def checkRegister(username, email, password, confirmPassword, registerWindow, Wi
         return messagebox.showerror("Error", "Passwords don't match")
 
     else:
-        user = register(username, email, password)
+        user = register(username, email, password) ## add the user to the database
+        newUser = get_user(email) # get user info
 
-        if (user == True):  # if the register function returns True will add the user to the database
+        if (user == True): 
             messagebox.showinfo(
                 "Success", f"We're glad you join our family Chief {username}")
 
             isLogged = True
-            isRegister = True
+            isNewUser = True
 
             registerWindow.destroy()
             Window.destroy()
 
-            HomeView(user, isLogged, isRegister)
+            HomeView(newUser, isLogged, isNewUser)
 
 
 def openSignUpLink(event, loginWindow, Window):

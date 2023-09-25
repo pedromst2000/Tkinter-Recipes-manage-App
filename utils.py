@@ -16,8 +16,20 @@ def checkEmail(email):
 
     return True # if match the pattern, return True
 
+# this function will check if the username is valid with regex
+# Regex explanation:
+# ^ - matches the beginning of the string
+# [a-zA-Z0-9_.-]+ - matches any character from a to z, A to Z, 0 to 9, _ , . or - one or more times
+# $ - matches the end of the string
+def checkUsername(username):
+    
+        if (not regex.match(r"^[a-zA-Z0-9_.-]+$", username)):
+            return False # if dont match the pattern, return False
+    
+        return True # if match the pattern, return True
+
 def hidePasswordIcon(ImageTk, Image, canvasManagePassword, NW, X, Y):
-    eye = Image.open("assets/images/hidden_password.png")
+    eye = Image.open("assets/images/Authentication/hidden_password.png")
 
     eye = eye.resize((40, 26))
 
@@ -30,7 +42,7 @@ def hidePasswordIcon(ImageTk, Image, canvasManagePassword, NW, X, Y):
     canvasManagePassword.place(x=X, y=Y)
 
 def showPasswordIcon(ImageTk, Image, canvasManagePassword, NW, X, Y):
-    eye = Image.open("assets/images/visible_password.png")
+    eye = Image.open("assets/images/Authentication/visible_password.png")
 
     eye = eye.resize((40, 26))
 

@@ -30,7 +30,7 @@ canvasMain = Canvas(Window, bg="grey", height=760, width=1280)
 canvasMain.place(x=-2, y=100)
 
 # # image
-image = Image.open("assets/images/home_image.png")
+image = Image.open("assets/images/Home/home_image.png")
 image = image.resize((1280, 760))
 
 image = ImageTk.PhotoImage(image)
