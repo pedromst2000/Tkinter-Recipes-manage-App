@@ -87,16 +87,62 @@ def adminUserHomeView(user):
     # create text on canvas
     canvasHome.create_text(640, 80, text="CraftingCook",
                            font=("Arial", 40, "bold"), fill="#E5B714")
-    canvasHome.create_text(640, 620, text="Your Kitchen best friend", font=("Arial", 25,"normal"), fill="#ffffff")
+    canvasHome.create_text(640, 620, text="Your Kitchen best friend", font=(
+        "Arial", 25, "normal"), fill="#ffffff")
 
-    manageIcon = Image.open("assets/images/Home/manage_icon.png")
-    manageIcon = manageIcon.resize((50, 50))
+    manageIcon = Image.open("assets/images/Home/Manage_icon.png")
+
+    manageIcon = manageIcon.resize((80, 80))
 
     manageIcon = ImageTk.PhotoImage(manageIcon)
 
-    canvasHome.create_image(640, 200, anchor=NW, image=manageIcon)
+    buttonManage = Button(canvasHome, text="Manage", font=("Arial", 10, "bold"), bg="#B5960E", fg="white",
+                          cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=manageIcon, compound=TOP, padx=15, pady=15)
+    buttonManage.place(x=160, y=250)
 
-    canvasHome.create_text(640, 300, text="Manage", font=("Arial", 20, "bold"), fill="#ffffff")
+    settingsIcon = Image.open("assets/images/Home/Settings_icon.png")
+
+    settingsIcon = settingsIcon.resize((80, 80))
+
+    settingsIcon = ImageTk.PhotoImage(settingsIcon)
+
+    buttonSettings = Button(canvasHome, text="Settings", font=("Arial", 10, "bold"), bg="#B5960E", fg="white",
+                            cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=settingsIcon, compound=TOP, padx=15, pady=15)
+
+    buttonSettings.place(x=360, y=250)
+
+    recipesIcon = Image.open("assets/images/Home/Recipes_icon.png")
+
+    recipesIcon = recipesIcon.resize((80, 80))
+
+    recipesIcon = ImageTk.PhotoImage(recipesIcon)
+
+    buttonRecipes = Button(canvasHome, text="Recipes", font=("Arial", 10, "bold"), bg="#B5960E", fg="white",
+                           cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=recipesIcon, compound=TOP, padx=15, pady=15)
+
+    buttonRecipes.place(x=560, y=250)
+
+    dashboardIcon = Image.open("assets/images/Home/Dashboard_icon.png")
+
+    dashboardIcon = dashboardIcon.resize((80, 80))
+
+    dashboardIcon = ImageTk.PhotoImage(dashboardIcon)
+
+    buttonDashboard = Button(canvasHome, text="Dashboard", font=("Arial", 10, "bold"), bg="#B5960E", fg="white",
+                             cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=dashboardIcon, compound=TOP, padx=15, pady=15)
+
+    buttonDashboard.place(x=760, y=250)
+
+    favoritesIcon = Image.open("assets/images/Home/Favorites_icon.png")
+
+    favoritesIcon = favoritesIcon.resize((80, 80))
+
+    favoritesIcon = ImageTk.PhotoImage(favoritesIcon)
+
+    buttonFavorites = Button(canvasHome, text="Favorites", font=("Arial", 10, "bold"), bg="#B5960E", fg="white",
+                             cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=favoritesIcon, compound=TOP, padx=15, pady=15)
+
+    buttonFavorites.place(x=960, y=250)
 
     Window.mainloop()
 
