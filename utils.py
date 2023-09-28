@@ -104,4 +104,3 @@ def increment_id():
     last_line = last_line.split(";") # split the last line by the semicolon
  
     return int(last_line[0]) + 1 # return the id incremented by 1
-

@@ -19,3 +19,5 @@ Tkinter app to manage and create recipes.
 - `File database` contains all the CRUD operations logic of the app (create, read, update, delete) to manage the database.
 
 - `File utils` contains functions that are used in the app or auxiliar logic that is needed for certain parts of the app, to avoid `code repetition`.
+
+- `Folder Widget` contains widget classes that can be reusable in the app (navbar, menu, canvas, ...)

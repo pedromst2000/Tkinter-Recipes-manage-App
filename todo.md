@@ -2,8 +2,6 @@ User Stories - Requirements - Features
 
 -- to be done in the next commits
 
-=> make navbar reusable 'component' with util function  - refactor code
-=> make the home view resable 'component' with util function - refactor code
 => work on the profile page
 
 - [X]  The users authenticate on the app with their account : email and password (login)
