@@ -93,6 +93,7 @@ def checkRegisterEmail(email):
 
 
 def get_user(email):
+
     db = Database(users=[])
     users = db.get_users()
 
@@ -101,3 +102,41 @@ def get_user(email):
             return user
 
     return None
+
+def save_avatar(email, avatar):
+    db = Database(users=[])
+    users = db.get_users()
+
+    for user in users:
+        if user["email"] == email: # if the email exists in the database
+            user["avatar"] = avatar # update the avatar of the user
+            user = User(user["username"], user["email"], user["password"], user["role"], user["avatar"], user["isBlocked"]) 
+            user.update_user() # update the user in the database
+            return True # return True if the avatar was updated successfully
+
+    return False # return False if the avatar wasn't updated successfully
+
+def change_password(email, newPassword):
+    db = Database(users=[])
+    users = db.get_users()
+
+    for user in users:
+        if user["email"] == email: # if the email exists in the database
+            user["password"] = newPassword # update the password of the user
+            user = User(user["username"], user["email"], user["password"], user["role"], user["avatar"], user["isBlocked"]) 
+            user.update_user() # update the user in the database
+            return True # return True if the password was updated successfully
+
+    return False # return False if the password wasn't updated successfully
+
+def delete_account(email):
+    db = Database(users=[])
+    users = db.get_users()
+
+    for user in users:
+        if user["email"] == email: # if the email exists in the database
+            user = User(user["username"], user["email"], user["password"], user["role"], user["avatar"], user["isBlocked"]) 
+            user.delete_user() # delete the user from the database
+            return True # return True if the user was deleted successfully
+
+    return False # return False if the user wasn't deleted successfully

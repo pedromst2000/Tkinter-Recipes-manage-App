@@ -65,3 +65,38 @@ class Database:
             f"\n{increment_id()};{user.username};{user.email};{user.password};{user.role};{user.avatar};{user.isBlocked}")
 
         file.close()
+
+    def update_user(self, user):
+
+
+        file = open("database/users.txt", "r", encoding="utf-8")
+
+        lines = file.readlines()
+
+        file.close()
+
+        file = open("database/users.txt", "w+", encoding="utf-8")
+
+        for line in lines:
+            if line.split(";")[0] != str(user.id): # if the id of the user is not the same as the id of the user in the line
+                file.write(line) # write the line as it is
+            else:
+                file.write(
+                    f"{user.id};{user.username};{user.email};{user.password};{user.role};{user.avatar};{user.isBlocked}\n")
+
+        file.close()
+
+    def delete_user(self, user):
+        file = open("database/users.txt", "r", encoding="utf-8")
+
+        lines = file.readlines()
+
+        file.close()
+
+        file = open("database/users.txt", "w+", encoding="utf-8")
+
+        for line in lines:
+            if line.split(";")[0] != str(user.id):
+                file.write(line)
+
+        file.close()

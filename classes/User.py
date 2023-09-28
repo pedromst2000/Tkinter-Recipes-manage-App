@@ -21,14 +21,17 @@ class User:
         self.isBlocked = isBlocked
 
     # methods
+    # add new instance of the Class User
     def add_user(self):
         db = Database(users=[]) 
         db.create_user(self)
+
+    # update an instance of the Class User    
+    def update_user(self):
+        db = Database(users=[])
+        db.update_user(self)
     
-    # def update_user(self):
-    #     db = Database()
-    #     db.update_user(self)
-    
-    # def delete_user(self):
-    #     db = Database()
-    #     db.delete_user(self)
+    # delete an instance of the Class User
+    def delete_user(self):
+        db = Database(users=[])
+        db.delete_user(self)
