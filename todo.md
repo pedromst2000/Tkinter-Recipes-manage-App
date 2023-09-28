@@ -2,7 +2,9 @@ User Stories - Requirements - Features
 
 -- to be done in the next commits
 
-=> work on the profile page
+=> insert a messagebox about some features how to access them (profile, notifications, etc) when the user register
+=> make avatar widget reusable (the cursor should be dynamic when the user hover the avatar)
+=> add the avatar widger to the navbar and to the profile page
 
 - [X]  The users authenticate on the app with their account : email and password (login)
 - [X]  if the user doesn't have an account, he can sign up with the following information: username, email and password 
@@ -14,21 +16,21 @@ User Stories - Requirements - Features
 - [X]  The email should be unique
 - [X]  In the login or in the register the password field should have hidden or visible password option
 - [X]  New user should have dummy profile picture
-- []  A logged User can acess to his profile page (regular user) --
+- [X]  A logged User can acess to his profile page
 - [X]  The users should have two roles: regular and admin
 - []  Only the admin can manage the categories of the recipes (add or delete categories of recipes)
 - []  Only the admin can manage the regular users
 - []  Only the admin can configure the notifications
 - []  The admin should have a list of the categories of the recipes wich should be dynamic (add or delete categories of recipes)
-- []  The regular user should have the possibility to edit his profile (change password, change avatar)
-- []  The regular user should have the possibility to delete his account on his profile page
+- []  The regular user should have the possibility to edit his profile (change password, change avatar) --
+- []  The regular user should have the possibility to delete his account on his profile page --
 - []  An user should be able to add recipes to the catalog
 - []  An user should be able to delete his own recipes
 - []  A recipe should have atleast : title, preparation mode, estimated time of confection, image of the recipe, ingredients, category of the recipe (can have more than one category)
 - []  A recipe should be asscociated atleast to one category
 - []  An user can add , delete and edit his own recipes (only the owner of the recipe can edit or delete the recipe)
 - []  When the user add a recipe should be pending for approval of the admin
-- []  The admin should have a list with the recipes pending for approval (should be able to approve or delete the recipe)
+- []  The admin should have a list with the recipes pending for approval in his profile (should be able to approve or delete the recipe)
 - []  When the admin approve the recipe, the recipe should be available on the catalog
 - []  An user can create a list of his favorite recipes
 - []  In the user profile should be available the categories of the recipes that user most like

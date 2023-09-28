@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox, Canvas, NW, TOP, X, Button, Frame
+from tkinter import messagebox, Canvas, NW, Button
 from PIL import ImageTk, Image
 from models.Users import login, register, checkRegisterUsername, checkRegisterEmail, get_user
 from utils import checkEmail, togglePasswordVisibility, manageVisibility, checkUsername
@@ -244,10 +244,11 @@ def checkRegister(username, email, password, confirmPassword, registerWindow, Wi
         return messagebox.showerror("Error", "Passwords don't match")
 
     else:
-        user = register(username, email, password) ## add the user to the database
-        newUser = get_user(email) # get user info
+        # add the user to the database
+        user = register(username, email, password)
+        newUser = get_user(email)  # get user info
 
-        if (user == True): 
+        if (user == True):
             messagebox.showinfo(
                 "Success", f"We're glad you join our family Chief {username}")
 

@@ -1,5 +1,4 @@
-import tkinter as tk
-from tkinter import *
+from tkinter import messagebox, Tk, Frame, TOP, X, NW, Canvas, Image, Button
 from PIL import ImageTk, Image
 from models.Users import checkLoggedUserRole, checkLoggedUserIsBlocked
 from widgets.Navbar import NavbarWidget
@@ -32,6 +31,8 @@ def adminUserHomeView(user):
 
     Window.resizable(0, 0)
 
+    # messagebox feature
+
     navbar_widget = NavbarWidget(
         Frame,
         Window,
@@ -44,6 +45,7 @@ def adminUserHomeView(user):
         user["avatar"],
         "assets/images/Home/notification.png",
         "assets/images/Home/exit_app.png",
+        user
     )
     navbar_widget.create_widget()
 
@@ -91,6 +93,7 @@ def regularUserHomeView(user):
         user["avatar"],
         "assets/images/Home/notification.png",
         "assets/images/Home/exit_app.png",
+        user
     )
     navbar_widget.create_widget()
 

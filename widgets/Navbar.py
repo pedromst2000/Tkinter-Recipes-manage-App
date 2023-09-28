@@ -1,5 +1,7 @@
+from views.Profile.Profile import ProfileView
+
 class NavbarWidget:
-    def __init__(self, Frame, Window, TOP, X, NW, Canvas, Image, ImageTk, avatarUser, notificationIcon, exitAppIcon):
+    def __init__(self, Frame, Window, TOP, X, NW, Canvas, Image, ImageTk, avatarUser, notificationIcon, exitAppIcon, user):
         self.Frame = Frame
         self.Window = Window
         self.TOP = TOP
@@ -11,6 +13,7 @@ class NavbarWidget:
         self.avatarUser = avatarUser
         self.notificationIcon = notificationIcon
         self.exitAppIcon = exitAppIcon
+        self.user = user
 
     # method to create the navbar widget
     def create_widget(self):
@@ -18,7 +21,7 @@ class NavbarWidget:
         navbar.pack(side=self.TOP, fill=self.X)
 
         canvasAvatar = self.Canvas(navbar, height=70, width=70,
-                                   highlightthickness=0, cursor="hand2")
+                                   highlightthickness=0, cursor="arrow")
         canvasAvatar.place(x=20, y=15)
 
         avatar = self.Image.open(self.avatarUser)
@@ -46,3 +49,6 @@ class NavbarWidget:
         self.exitApp = self.ImageTk.PhotoImage(exitApp)  # Store as an instance variable
 
         canvasExitApp.create_image(0, 0, anchor=self.NW, image=self.exitApp)
+
+        # bind - onCLick will call the profileView function with the window as parameter to be able to destroy it after the sucessfull authentication
+        canvasAvatar.bind("<Button-1>", lambda event: ProfileView(self.Window, self.user))
