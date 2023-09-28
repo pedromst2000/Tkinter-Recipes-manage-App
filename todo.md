@@ -2,6 +2,7 @@ User Stories - Requirements - Features
 
 
 -- Improve the documentation of the Tkinter App
+
 -- to be done in the next commits
 
 => work on the profile page
