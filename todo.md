@@ -1,5 +1,8 @@
 User Stories - Requirements - Features
 
+
+-- Improve the documentation of the Tkinter App
+
 -- to be done in the next commits
 
 => insert a messagebox about some features how to access them (profile, notifications, etc) when the user register
