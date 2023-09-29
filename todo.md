@@ -5,7 +5,6 @@ User Stories - Requirements - Features
 
 -- to be done in the next commits
 
-=> insert a messagebox about some features how to access them (profile, notifications, etc) when the user register
 => make avatar widget reusable (the cursor should be dynamic when the user hover the avatar)
 => add the avatar widger to the navbar and to the profile page
 

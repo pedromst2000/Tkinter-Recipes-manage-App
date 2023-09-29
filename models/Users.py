@@ -48,7 +48,7 @@ def register(username, email, password):
 
     # if the email and the username doesn't exist, create the user
     user = User(username, email, password, "regular",
-                "assets/images/avatar_profile_placeholder.jpg",
+                "assets/images/Profile/avatar_profile_placeholder.jpg",
                 False)
     user.add_user() # add new instance of the user to the database
 

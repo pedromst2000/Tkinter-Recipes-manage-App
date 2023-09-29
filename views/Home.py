@@ -1,4 +1,4 @@
-from tkinter import messagebox, Tk, Frame, TOP, X, NW, Canvas, Image, Button
+from tkinter import messagebox, Tk, Frame, TOP, X, NW, Canvas, Image
 from PIL import ImageTk, Image
 from models.Users import checkLoggedUserRole, checkLoggedUserIsBlocked
 from widgets.Navbar import NavbarWidget
@@ -15,10 +15,10 @@ def HomeView(user, isLogged, isRegister):
             blockedUserHomeView(user)
 
         elif (checkLoggedUserRole(user["email"]) == "regular"):
-            regularUserHomeView(user)
+            regularUserHomeView(user, isRegister)
 
     elif (isLogged == True and isRegister == True):
-        regularUserHomeView(user)
+        regularUserHomeView(user, isRegister)
 
 
 def adminUserHomeView(user):
@@ -31,17 +31,8 @@ def adminUserHomeView(user):
 
     Window.resizable(0, 0)
 
-    # messagebox feature
-
     navbar_widget = NavbarWidget(
-        Frame,
         Window,
-        TOP,
-        X,
-        NW,
-        Canvas,
-        Image,
-        ImageTk,
         user["avatar"],
         "assets/images/Home/notification.png",
         "assets/images/Home/exit_app.png",
@@ -50,15 +41,8 @@ def adminUserHomeView(user):
     navbar_widget.create_widget()
 
     home_canvas_widget = HomeCanvasWidget(
-        Canvas,
         Window,
-        Image,
-        ImageTk,
-        "assets/images/Home/home_image_V2.png",
-        NW,
         user,
-        Button,
-        TOP,
         "assets/images/Home/Manage_icon.png",
         "assets/images/Home/settings_icon.png",
         "assets/images/Home/recipes_icon.png",
@@ -71,7 +55,7 @@ def adminUserHomeView(user):
     Window.mainloop()
 
 
-def regularUserHomeView(user):
+def regularUserHomeView(user, isRegister):
     Window = Tk()
 
     Window.title("CraftingCook")
@@ -82,14 +66,7 @@ def regularUserHomeView(user):
     Window.resizable(0, 0)
 
     navbar_widget = NavbarWidget(
-        Frame,
         Window,
-        TOP,
-        X,
-        NW,
-        Canvas,
-        Image,
-        ImageTk,
         user["avatar"],
         "assets/images/Home/notification.png",
         "assets/images/Home/exit_app.png",
@@ -98,15 +75,8 @@ def regularUserHomeView(user):
     navbar_widget.create_widget()
 
     home_canvas_widget = HomeCanvasWidget(
-        Canvas,
-        Window,
-        Image,
-        ImageTk,
-        "assets/images/Home/home_image_V2.png",
-        NW,
+         Window,
         user,
-        Button,
-        TOP,
         "assets/images/Home/Manage_icon.png",
         "assets/images/Home/settings_icon.png",
         "assets/images/Home/recipes_icon.png",
@@ -115,6 +85,12 @@ def regularUserHomeView(user):
         "assets/images/Home/home_image_V2.png"
     )
     home_canvas_widget.create_widget()
+
+    if (isRegister == True):
+        messagebox.showinfo("Welcome",
+                            "1 - You can access your profile throught the avatar\n\n" +
+                            "2 - Clicking the notification icon '🔔' will open your notifications\n\n"
+                            )
 
     Window.mainloop()
 
