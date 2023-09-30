@@ -17,21 +17,23 @@ class NavbarWidget:
 
         # avatar
         avatar = Avatar(
-            self.avatarUser,
-            "hand2",
-            70,
-            70,
-            20,
-            15,
-            70,
-            70,
-            0,
-            0,
+            self.avatarUser, # avatar image
+            "hand2", # cursor
+            70, # height
+            70, # width
+            20, # x
+            15, # y
+            70, # radius
+            70, # borderwidth
+            0, # highlightthickness
+            0, # bd
             self.Window,
             self.user
         )
 
         avatar.create_widget()
+
+        # bind - onCLick will call the ProfileView function with the window as parameter to be able to destroy it after the successful authentication
 
         canvasNotification = Canvas(navbar, height=50, width=50, highlightthickness=0,
                                          bg="#E5B714", cursor="hand2")

@@ -28,5 +28,10 @@ class Avatar:
 
         canvasAvatar.create_image(self.canvasX, self.canvasY, anchor=NW, image=self.avatar)
 
-        # bind - onCLick will call the ProfileView function with the window as parameter to be able to destroy it after the successful authentication
-        canvasAvatar.bind("<Button-1>", lambda event: ProfileView(self.Window, self.user))
+
+    # checking if the avatar is in the navbar
+        if (self.placeX == 20 and self.placeY == 15): # if the avatar is in the navbar (checking the coordinates)
+            # bind - onCLick will call the ProfileView function
+            canvasAvatar.bind("<Button-1>", lambda event: ProfileView(self.Window, self.user))
+        else:
+            return None # if the avatar is not in the navbar, return None

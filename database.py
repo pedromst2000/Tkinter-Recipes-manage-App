@@ -10,9 +10,9 @@ class Database:
 # constructor
     def __init__(self,
                  users,
-                 #  recipes,
-                 #  favorites,
-                 #    comments
+                #   recipes,
+                #   favorites,
+                #     comments
                  ):
         self.users = users
         # self.recipes = recipes

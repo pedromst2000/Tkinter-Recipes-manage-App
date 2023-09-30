@@ -32,10 +32,10 @@ def adminUserHomeView(user):
     Window.resizable(0, 0)
 
     navbar_widget = NavbarWidget(
-        Window,
-        user["avatar"],
-        "assets/images/Home/notification.png",
-        "assets/images/Home/exit_app.png",
+        Window, 
+        user["avatar"], # avatarUser 
+        "assets/images/Home/notification.png", # notificationIcon
+        "assets/images/Home/exit_app.png", # exitAppIcon
         user
     )
     navbar_widget.create_widget()
@@ -43,7 +43,7 @@ def adminUserHomeView(user):
     home_canvas_widget = HomeCanvasWidget(
         Window,
         user,
-        "assets/images/Home/Manage_icon.png",
+        "assets/images/Home/Manage_icon.png", 
         "assets/images/Home/settings_icon.png",
         "assets/images/Home/recipes_icon.png",
         "assets/images/Home/dashboard_icon.png",
