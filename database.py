@@ -1,4 +1,3 @@
-from utils import increment_id
 
 class Database:
 
@@ -10,9 +9,9 @@ class Database:
 # constructor
     def __init__(self,
                  users,
-                #   recipes,
-                #   favorites,
-                #     comments
+                 #   recipes,
+                 #   favorites,
+                 #     comments
                  ):
         self.users = users
         # self.recipes = recipes
@@ -29,26 +28,21 @@ class Database:
         for line in lines:
             user = line.split(";")
             self.users.append({
-                "id": int(user[0]),
-                "username": user[1],
-                "email": user[2],
-                "password": user[3],
-                "role": user[4],
-                "avatar": user[5],
+                "username": user[0],
+                "email": user[1],
+                "password": user[2],
+                "role": user[3],
+                "avatar": user[4],
                 # to check if the user is blocked or not
-                "isBlocked": (user[6]).strip("\n").replace(" ", "") == "True"
+                "isBlocked": (user[5]).strip("\n").replace(" ", "") == "True"
             })
-
 
         file.close()
 
         return self.users
 
-      
-
     # to check the type of the data in the list
         # print(
-        #     type(self.users[0]["id"]),
         #     type(self.users[0]["username"]),
         #     type(self.users[0]["email"]),
         #     type(self.users[0]["password"]),
@@ -57,17 +51,15 @@ class Database:
         #     type(self.users[0]["isBlocked"])
         # )
 
-      
     def create_user(self, user):  # add a new user to the database
         file = open("database/users.txt", "a", encoding="utf-8")
 
         file.write(
-            f"\n{increment_id()};{user.username};{user.email};{user.password};{user.role};{user.avatar};{user.isBlocked}")
+            f"\n{user.username};{user.email};{user.password};{user.role};{user.avatar};{user.isBlocked}")
 
         file.close()
 
     def update_user(self, user):
-
 
         file = open("database/users.txt", "r", encoding="utf-8")
 
@@ -78,11 +70,13 @@ class Database:
         file = open("database/users.txt", "w+", encoding="utf-8")
 
         for line in lines:
-            if line.split(";")[0] != str(user.id): # if the id of the user is not the same as the id of the user in the line
-                file.write(line) # write the line as it is
-            else:
+            # upddate by the email or username
+            if line.split(";")[0] == user.username or line.split(";")[1] == user.email:
+                # chance only the avatar without space
                 file.write(
-                    f"{user.id};{user.username};{user.email};{user.password};{user.role};{user.avatar};{user.isBlocked}\n")
+                    f"{user.username};{user.email};{user.password};{user.role};{user.avatar};{user.isBlocked}\n")
+            else:
+                file.write(line)
 
         file.close()
 
@@ -96,7 +90,8 @@ class Database:
         file = open("database/users.txt", "w+", encoding="utf-8")
 
         for line in lines:
-            if line.split(";")[0] != str(user.id):
+            # delete by the email or username
+            if line.split(";")[0] != user.username and line.split(";")[1] != user.email:
                 file.write(line)
 
         file.close()

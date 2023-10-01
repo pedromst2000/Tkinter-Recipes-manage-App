@@ -1,11 +1,14 @@
-from tkinter import *
+from tkinter import Toplevel, Button
+from models.Users import change_password, save_avatar, delete_account
+from utils import changeAvatar
+
 
 def ProfileView(Window, user):
-    
+
     # lazy import to avoid circular import error
     from widgets.Avatar import Avatar
 
-    # open new window   
+    # open new window
     profileWindow = Toplevel(Window)
 
     profileWindow.title(f"CraftingCook - Profile - {user['username']}")
@@ -13,7 +16,11 @@ def ProfileView(Window, user):
     # hide the main window
     Window.withdraw()
 
-    profileWindow.geometry("650x700")
+    if (user["role"] == "admin"):
+        profileWindow.geometry(f"650x620")
+
+    elif (user["role"] == "regular"):
+        profileWindow.geometry(f"650x750")
 
     profileWindow.iconbitmap("assets/CraftingCook.ico")
 
@@ -38,24 +45,159 @@ def ProfileView(Window, user):
         user
     )
 
-    # create the avatar widget 
+    # create the avatar widget
     avatar_widget.create_widget()
-    
+
     if (user["role"] == "admin"):
-        adminProfileView(user)
+        adminProfileView(profileWindow, user)
 
     elif (user["role"] == "regular"):
-        regularProfileView(user)
+        regularProfileView(profileWindow, user)
 
     # open the main window when the profile window is closed
-    profileWindow.protocol("WM_DELETE_WINDOW", lambda: [profileWindow.destroy(), Window.deiconify()])
+    profileWindow.protocol("WM_DELETE_WINDOW", lambda: [
+                           profileWindow.destroy(), Window.deiconify()])
 
     profileWindow.mainloop()
 
 
-def adminProfileView(user):
-    print(f"username: {user['username']}")
+def adminProfileView(profileWindow, user):
+    btnChangeAvatar = Button(
+        profileWindow,
+        text="Change Avatar",
+        font=("Arial", 15),
+        bg="#B5960E",
+        fg="#FFFFFF",
+        bd=0,
+        cursor="hand2",
+        # change background color when the mouse is over the button
+        activebackground="#D1A711",
+        # change foreground color when the mouse is over the button
+        activeforeground="#ffffff",
+        padx=25,
+        pady=10
+    )
+    btnChangeAvatar.place(x=228, y=300)
 
-    
-def regularProfileView(user):
-    print(f"username: {user['username']}")
+    btnSaveAvatar = Button(
+        profileWindow,
+        text="Save Avatar",
+        font=("Arial", 15),
+        bg="#B5960E",
+        fg="#FFFFFF",
+        bd=0,
+        cursor="hand2",
+        # change background color when the mouse is over the button
+        activebackground="#D1A711",
+        # change foreground color when the mouse is over the button
+        activeforeground="#ffffff",
+        padx=35,
+        pady=10
+    )
+    btnSaveAvatar.place(x=228, y=400)
+
+    btnPendingAprovals = Button(
+        profileWindow,
+        text="Pending Aprovals",
+        font=("Arial", 15),
+        bg="#B5960E",
+        fg="#FFFFFF",
+        bd=0,
+        cursor="hand2",
+        # change background color when the mouse is over the button
+        activebackground="#D1A711",
+        # change foreground color when the mouse is over the button
+        activeforeground="#ffffff",
+        padx=15,
+        pady=10
+    )
+    btnPendingAprovals.place(x=228, y=500)
+
+    btnChangeAvatar.bind("<Button-1>", lambda event: changeAvatar())
+
+    # bind - onClick will call the save avatar
+    btnSaveAvatar.bind("<Button-1>", lambda event: save_avatar(
+        user["email"], 
+            changeAvatar()
+        ))
+
+
+def regularProfileView(profileWindow, user):
+
+    btnChangeAvatar = Button(
+        profileWindow,
+        text="Change Avatar",
+        font=("Arial", 15),
+        bg="#B5960E",
+        fg="#FFFFFF",
+        bd=0,
+        cursor="hand2",
+        # change background color when the mouse is over the button
+        activebackground="#D1A711",
+        # change foreground color when the mouse is over the button
+        activeforeground="#ffffff",
+        padx=25,
+        pady=10
+    )
+
+    btnChangeAvatar.place(x=128, y=300)
+
+    btnSaveAvatar = Button(
+        profileWindow,
+        text="Save Avatar",
+        font=("Arial", 15),
+        bg="#B5960E",
+        fg="#FFFFFF",
+        bd=0,
+        cursor="hand2",
+        # change background color when the mouse is over the button
+        activebackground="#D1A711",
+        # change foreground color when the mouse is over the button
+        activeforeground="#ffffff",
+        padx=35,
+        pady=10
+    )
+
+    btnSaveAvatar.place(x=128, y=400)
+
+    btnChangePassword = Button(
+        profileWindow,
+        text="Change Password",
+        font=("Arial", 15),
+        bg="#B5960E",
+        fg="#FFFFFF",
+        bd=0,
+        cursor="hand2",
+        # change background color when the mouse is over the button
+        activebackground="#D1A711",
+        # change foreground color when the mouse is over the button
+        activeforeground="#ffffff",
+        padx=15,
+        pady=10
+    )
+    btnChangePassword.place(x=328, y=300)
+
+    btnDeleteAccount = Button(
+        profileWindow,
+        text="Delete Account",
+        font=("Arial", 15),
+        bg="#B5960E",
+        fg="#FFFFFF",
+        bd=0,
+        cursor="hand2",
+        # change background color when the mouse is over the button
+        activebackground="#D1A711",
+        # change foreground color when the mouse is over the button
+        activeforeground="#ffffff",
+        padx=28,
+        pady=10
+    )
+
+    btnDeleteAccount.place(x=328, y=400)
+
+    btnChangeAvatar.bind("<Button-1>", lambda event: changeAvatar())
+
+    btnSaveAvatar.bind("<Button-1>", lambda event: save_avatar(
+        user["email"], 
+        "chief.png"
+        ))
