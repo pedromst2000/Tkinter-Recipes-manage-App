@@ -1,6 +1,5 @@
 import re as regex
-from tkinter import filedialog
-
+from tkinter import messagebox, filedialog
 isPasswordVisible = False
 
 # this function will check if the email is valid with regex
@@ -101,38 +100,3 @@ def manageVisibility(ImageTk, Image, canvasManagePassword, NW, inputPassword, X,
     else:
         # if the password input is empty, the canvas will be hidden and not showing any icon (either hide or show password icon)
         canvasManagePassword.place_forget()
-
-
-def get_file_extension(filename):
-
-    filename = filename.split(".")
-
-    return filename[len(filename) - 1]
-
-
-def changeAvatar():
-
-    # open the file explorer
-    filename = filedialog.askopenfilename(
-        title="Select an image",
-        filetypes=(
-            ("png files", "*.png"),
-            ("jpg files", "*.jpg"),
-            ("jpeg files", "*.jpeg")
-        )
-    )
-
-    # get the file extension
-    file_extension = get_file_extension(filename)
-
-
-    # remove any directory from the filename and replace from the project directory
-    filename = filename.replace(filename[:filename.rfind("/") + 1], "")
-
-    filename = filename.join(["assets/images/Profile/", ""])
-
-    # if the file is an image
-    if (file_extension in ["png", "jpg", "jpeg"]):
-        return filename
-
-    return None

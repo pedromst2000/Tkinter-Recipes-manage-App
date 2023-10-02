@@ -1,6 +1,40 @@
 from tkinter import Toplevel, Button
 from models.Users import change_password, save_avatar, delete_account
-from utils import changeAvatar
+from tkinter import messagebox, filedialog
+
+def get_file_extension(filename):
+    
+        filename = filename.split(".")
+    
+        return filename[len(filename) - 1]
+
+
+def changeAvatar(profileWindow, user):
+
+      # lazy import to avoid circular import error
+    from widgets.Avatar import Avatar
+
+    # open the file explorer
+    filename = filedialog.askopenfilename(
+        title="Select an image",
+        filetypes=(
+            ("png files", "*.png"),
+            ("jpg files", "*.jpg"),
+            ("jpeg files", "*.jpeg")
+        )
+    )
+
+    # get the file extension
+    file_extension = get_file_extension(filename)
+
+    # if the file is an image
+    if (file_extension in ["png", "jpg", "jpeg"]):
+        print(filename)
+     
+     
+    else:
+        messagebox.showerror(
+            "Error", "The file must be an image with the extension png, jpg or jpeg")
 
 
 def ProfileView(Window, user):
@@ -15,19 +49,6 @@ def ProfileView(Window, user):
 
     # hide the main window
     Window.withdraw()
-
-    if (user["role"] == "admin"):
-        profileWindow.geometry(f"650x620")
-
-    elif (user["role"] == "regular"):
-        profileWindow.geometry(f"650x750")
-
-    profileWindow.iconbitmap("assets/CraftingCook.ico")
-
-    profileWindow.resizable(0, 0)
-
-    # background color
-    profileWindow.configure(bg="#806B14")
 
     # avatar
     avatar_widget = Avatar(
@@ -49,10 +70,20 @@ def ProfileView(Window, user):
     avatar_widget.create_widget()
 
     if (user["role"] == "admin"):
+        profileWindow.geometry("650x620")
         adminProfileView(profileWindow, user)
 
     elif (user["role"] == "regular"):
+        profileWindow.geometry("650x750")
         regularProfileView(profileWindow, user)
+
+
+    profileWindow.iconbitmap("assets/CraftingCook.ico")
+
+    profileWindow.resizable(0, 0)
+
+    # background color
+    profileWindow.configure(bg="#806B14")
 
     # open the main window when the profile window is closed
     profileWindow.protocol("WM_DELETE_WINDOW", lambda: [
@@ -195,9 +226,9 @@ def regularProfileView(profileWindow, user):
 
     btnDeleteAccount.place(x=328, y=400)
 
-    btnChangeAvatar.bind("<Button-1>", lambda event: changeAvatar())
+    btnChangeAvatar.bind("<Button-1>", lambda event: changeAvatar(profileWindow, user))
 
-    btnSaveAvatar.bind("<Button-1>", lambda event: save_avatar(
-        user["email"], 
-        "chief.png"
-        ))
+    # btnSaveAvatar.bind("<Button-1>", lambda event: save_avatar(
+    #     user["email"], 
+    #     "chief.png"
+    #     ))

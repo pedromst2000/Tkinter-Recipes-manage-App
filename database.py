@@ -72,7 +72,6 @@ class Database:
         for line in lines:
             # upddate by the email or username
             if line.split(";")[0] == user.username or line.split(";")[1] == user.email:
-                # chance only the avatar without space
                 file.write(
                     f"{user.username};{user.email};{user.password};{user.role};{user.avatar};{user.isBlocked}\n")
             else:

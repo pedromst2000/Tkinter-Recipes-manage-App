@@ -3,6 +3,10 @@ User Stories - Requirements - Features
 
 -- Improve the documentation of the Tkinter App
 
+=> save the avatar appending the avatar selected from the device into the directory of the app - only the name of the avatar eg: c:/users/username/desktop/avatar.png => avatar.png
+=> save the avatar in the users with the same path => avatar.png - assets/images/Profile/avatar.png 
+
+
 -- to be done in the next commits
 
 - [X]  The users authenticate on the app with their account : email and password (login)
