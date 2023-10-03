@@ -1,46 +1,10 @@
-from tkinter import Toplevel, Button
+from tkinter import Toplevel, Button, Canvas, NW, X, TOP, Frame
 from models.Users import change_password, save_avatar, delete_account
 from tkinter import messagebox, filedialog
-
-def get_file_extension(filename):
-    
-        filename = filename.split(".")
-    
-        return filename[len(filename) - 1]
-
-
-def changeAvatar(profileWindow, user):
-
-      # lazy import to avoid circular import error
-    from widgets.Avatar import Avatar
-
-    # open the file explorer
-    filename = filedialog.askopenfilename(
-        title="Select an image",
-        filetypes=(
-            ("png files", "*.png"),
-            ("jpg files", "*.jpg"),
-            ("jpeg files", "*.jpeg")
-        )
-    )
-
-    # get the file extension
-    file_extension = get_file_extension(filename)
-
-    # if the file is an image
-    if (file_extension in ["png", "jpg", "jpeg"]):
-        print(filename)
-     
-     
-    else:
-        messagebox.showerror(
-            "Error", "The file must be an image with the extension png, jpg or jpeg")
+from PIL import ImageTk, Image
 
 
 def ProfileView(Window, user):
-
-    # lazy import to avoid circular import error
-    from widgets.Avatar import Avatar
 
     # open new window
     profileWindow = Toplevel(Window)
@@ -50,34 +14,6 @@ def ProfileView(Window, user):
     # hide the main window
     Window.withdraw()
 
-    # avatar
-    avatar_widget = Avatar(
-        user["avatar"],
-        "arrow",
-        200,
-        200,
-        225,
-        50,
-        200,
-        200,
-        0,
-        0,
-        profileWindow,
-        user
-    )
-
-    # create the avatar widget
-    avatar_widget.create_widget()
-
-    if (user["role"] == "admin"):
-        profileWindow.geometry("650x620")
-        adminProfileView(profileWindow, user)
-
-    elif (user["role"] == "regular"):
-        profileWindow.geometry("650x750")
-        regularProfileView(profileWindow, user)
-
-
     profileWindow.iconbitmap("assets/CraftingCook.ico")
 
     profileWindow.resizable(0, 0)
@@ -85,15 +21,25 @@ def ProfileView(Window, user):
     # background color
     profileWindow.configure(bg="#806B14")
 
-    # open the main window when the profile window is closed
-    profileWindow.protocol("WM_DELETE_WINDOW", lambda: [
-                           profileWindow.destroy(), Window.deiconify()])
+    # Profile Avatar
+    canvasAvatar = Canvas(profileWindow, height=200, width=200,
+                          highlightthickness=0, bg="#E5B714", cursor="arrow")
 
-    profileWindow.mainloop()
+    canvasAvatar.place(x=225, y=50)
 
+    avatar = Image.open(user["avatar"])
 
-def adminProfileView(profileWindow, user):
-    btnChangeAvatar = Button(
+    avatar = avatar.resize((200, 200))
+
+    avatar = ImageTk.PhotoImage(avatar)  # Store as an instance variable
+
+    canvasAvatar.create_image(0, 0, anchor=NW, image=avatar)
+
+    # the size of the window is different depending on the role of the user
+    if (user["role"] == "admin"):
+        profileWindow.geometry("650x620")
+
+        btnChangeAvatar = Button(
         profileWindow,
         text="Change Avatar",
         font=("Arial", 15),
@@ -108,9 +54,9 @@ def adminProfileView(profileWindow, user):
         padx=25,
         pady=10
     )
-    btnChangeAvatar.place(x=228, y=300)
+        btnChangeAvatar.place(x=228, y=300)
 
-    btnSaveAvatar = Button(
+        btnSaveAvatar = Button(
         profileWindow,
         text="Save Avatar",
         font=("Arial", 15),
@@ -125,9 +71,9 @@ def adminProfileView(profileWindow, user):
         padx=35,
         pady=10
     )
-    btnSaveAvatar.place(x=228, y=400)
+        btnSaveAvatar.place(x=228, y=400)
 
-    btnPendingAprovals = Button(
+        btnPendingAprovals = Button(
         profileWindow,
         text="Pending Aprovals",
         font=("Arial", 15),
@@ -142,20 +88,12 @@ def adminProfileView(profileWindow, user):
         padx=15,
         pady=10
     )
-    btnPendingAprovals.place(x=228, y=500)
+        btnPendingAprovals.place(x=228, y=500)
 
-    btnChangeAvatar.bind("<Button-1>", lambda event: changeAvatar())
+    elif (user["role"] == "regular"):
+        profileWindow.geometry("650x750")
 
-    # bind - onClick will call the save avatar
-    btnSaveAvatar.bind("<Button-1>", lambda event: save_avatar(
-        user["email"], 
-            changeAvatar()
-        ))
-
-
-def regularProfileView(profileWindow, user):
-
-    btnChangeAvatar = Button(
+        btnChangeAvatar = Button(
         profileWindow,
         text="Change Avatar",
         font=("Arial", 15),
@@ -171,9 +109,9 @@ def regularProfileView(profileWindow, user):
         pady=10
     )
 
-    btnChangeAvatar.place(x=128, y=300)
+        btnChangeAvatar.place(x=128, y=300)
 
-    btnSaveAvatar = Button(
+        btnSaveAvatar = Button(
         profileWindow,
         text="Save Avatar",
         font=("Arial", 15),
@@ -189,9 +127,9 @@ def regularProfileView(profileWindow, user):
         pady=10
     )
 
-    btnSaveAvatar.place(x=128, y=400)
+        btnSaveAvatar.place(x=128, y=400)
 
-    btnChangePassword = Button(
+        btnChangePassword = Button(
         profileWindow,
         text="Change Password",
         font=("Arial", 15),
@@ -206,9 +144,9 @@ def regularProfileView(profileWindow, user):
         padx=15,
         pady=10
     )
-    btnChangePassword.place(x=328, y=300)
+        btnChangePassword.place(x=328, y=300)
 
-    btnDeleteAccount = Button(
+        btnDeleteAccount = Button(
         profileWindow,
         text="Delete Account",
         font=("Arial", 15),
@@ -224,11 +162,10 @@ def regularProfileView(profileWindow, user):
         pady=10
     )
 
-    btnDeleteAccount.place(x=328, y=400)
+        btnDeleteAccount.place(x=328, y=400)
 
-    btnChangeAvatar.bind("<Button-1>", lambda event: changeAvatar(profileWindow, user))
+    # open the main window when the profile window is closed
+    profileWindow.protocol("WM_DELETE_WINDOW", lambda: [
+                           profileWindow.destroy(), Window.deiconify()])
 
-    # btnSaveAvatar.bind("<Button-1>", lambda event: save_avatar(
-    #     user["email"], 
-    #     "chief.png"
-    #     ))
+    profileWindow.mainloop()

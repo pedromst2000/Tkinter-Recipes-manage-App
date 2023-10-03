@@ -1,27 +1,10 @@
-from tkinter import messagebox, Tk, Frame, TOP, X, NW, Canvas, Image
+from tkinter import messagebox, Tk, Frame, TOP, X, NW, Canvas, Image, Button
 from PIL import ImageTk, Image
 from models.Users import checkLoggedUserRole, checkLoggedUserIsBlocked
-from widgets.Navbar import NavbarWidget
-from widgets.HomeCanvas import HomeCanvasWidget
+from classes.Navbar import NavbarWidget
 
 
 def HomeView(user, isLogged, isRegister):
-
-    if (isLogged == True and isRegister == False):
-        if (checkLoggedUserRole(user["email"]) == "admin"):
-            adminUserHomeView(user)
-
-        if (checkLoggedUserRole(user["email"]) == "regular" and checkLoggedUserIsBlocked(user["email"]) == True):
-            blockedUserHomeView(user)
-
-        elif (checkLoggedUserRole(user["email"]) == "regular"):
-            regularUserHomeView(user, isRegister)
-
-    elif (isLogged == True and isRegister == True):
-        regularUserHomeView(user, isRegister)
-
-
-def adminUserHomeView(user):
     Window = Tk()
 
     Window.title("CraftingCook")
@@ -31,95 +14,123 @@ def adminUserHomeView(user):
 
     Window.resizable(0, 0)
 
-    navbar_widget = NavbarWidget(
+    navbar = NavbarWidget(
         Window, 
         user["avatar"], # avatarUser 
         "assets/images/Home/notification.png", # notificationIcon
         "assets/images/Home/exit_app.png", # exitAppIcon
         user
     )
-    navbar_widget.create_widget()
+    navbar.create_widget()
 
-    home_canvas_widget = HomeCanvasWidget(
-        Window,
-        user,
-        "assets/images/Home/Manage_icon.png", 
-        "assets/images/Home/settings_icon.png",
-        "assets/images/Home/recipes_icon.png",
-        "assets/images/Home/dashboard_icon.png",
-        "assets/images/Home/favorites_icon.png",
-        "assets/images/Home/home_image_V2.png"
-    )
-    home_canvas_widget.create_widget()
+    canvasHome = Canvas(Window, height=650, width=1280)
+    canvasHome.place(x=-2, y=100)
 
-    Window.mainloop()
+    image = Image.open("assets/images/Home/home_image_V2.png")
+    image = image.resize((1280, 650))
 
+    image = ImageTk.PhotoImage(image)
 
-def regularUserHomeView(user, isRegister):
-    Window = Tk()
+    canvasHome.create_image(0, 0, anchor=NW, image=image)
 
-    Window.title("CraftingCook")
-    Window.geometry("1280x650")
-
-    Window.iconbitmap("assets/CraftingCook.ico")
-
-    Window.resizable(0, 0)
-
-    navbar_widget = NavbarWidget(
-        Window,
-        user["avatar"],
-        "assets/images/Home/notification.png",
-        "assets/images/Home/exit_app.png",
-        user
-    )
-    navbar_widget.create_widget()
-
-    home_canvas_widget = HomeCanvasWidget(
-         Window,
-        user,
-        "assets/images/Home/Manage_icon.png",
-        "assets/images/Home/settings_icon.png",
-        "assets/images/Home/recipes_icon.png",
-        "assets/images/Home/dashboard_icon.png",
-        "assets/images/Home/favorites_icon.png",
-        "assets/images/Home/home_image_V2.png"
-    )
-    home_canvas_widget.create_widget()
-
-    if (isRegister == True):
-        messagebox.showinfo("Welcome",
-                            "1 - You can access your profile throught the avatar\n\n" +
-                            "2 - Clicking the notification icon '🔔' will open your notifications\n\n"
-                            )
-
-    Window.mainloop()
+    # create text on canvas
+    canvasHome.create_text(640, 80, text="CraftingCook",
+                           font=("Arial", 40, "bold"), fill="#E5B714")
+    canvasHome.create_text(640, 125, text="Your Kitchen best friend", font=(
+        "Arial", 20, "normal"), fill="#ffffff")
 
 
-def blockedUserHomeView(user):
-    Window = Tk()
+    # rendering the menu view conditionally
+    if((isLogged == True and isRegister == False) or (isLogged == True and isRegister == True)) :
+       
+        if(checkLoggedUserRole(user["email"]) == "admin"):
+            manageIcon = Image.open("assets/images/Home/manage_icon.png")
 
-    Window.title("CraftingCook")
-    Window.geometry("1280x800")
+            manageIcon = manageIcon.resize((80, 80))
 
-    Window.iconbitmap("assets/CraftingCook.ico")
+            manageIcon = ImageTk.PhotoImage(manageIcon)
 
-    Window.resizable(0, 0)
+            buttonManage = Button(canvasHome, text="Manage", font=("Arial", 10, "bold"), bg="#B5960E", fg="white",
+                          cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=manageIcon, compound=TOP, padx=15, pady=15)
+            buttonManage.place(x=160, y=250)
 
-    # navbar
-    navbar = Frame(Window, bg="#E5B714", height=100)
-    navbar.pack(side=TOP, fill=X)
+            settingsIcon = Image.open("assets/images/Home/settings_icon.png")
 
-    # round canvas for the avatar
-    canvasAvatar = Canvas(navbar, height=70, width=70, highlightthickness=0)
-    canvasAvatar.place(x=20, y=15)
+            settingsIcon = settingsIcon.resize((80, 80))
 
-    # avatar
-    avatar = Image.open(user["avatar"])
+            settingsIcon = ImageTk.PhotoImage(settingsIcon)
 
-    avatar = avatar.resize((70, 70))
+            buttonSettings = Button(canvasHome, text="Settings", font=("Arial", 10, "bold"), bg="#B5960E", fg="white",
+                            cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=settingsIcon, compound=TOP, padx=15, pady=15)
 
-    avatar = ImageTk.PhotoImage(avatar)
+            buttonSettings.place(x=360, y=250)
 
-    canvasAvatar.create_image(0, 0, anchor=NW, image=avatar)
+            recipesIcon = Image.open("assets/images/Home/recipes_icon.png")
+
+            recipesIcon = recipesIcon.resize((80, 80))
+
+            recipesIcon = ImageTk.PhotoImage(recipesIcon)
+
+            buttonRecipes = Button(canvasHome, text="Recipes", font=("Arial", 10, "bold"), bg="#B5960E", fg="white",
+                           cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=recipesIcon, compound=TOP, padx=15, pady=15)
+
+            buttonRecipes.place(x=560, y=250)
+
+            dashboardIcon = Image.open("assets/images/Home/dashboard_icon.png")
+
+            dashboardIcon = dashboardIcon.resize((80, 80))
+
+            dashboardIcon = ImageTk.PhotoImage(dashboardIcon)
+
+            buttonDashboard = Button(canvasHome, text="Dashboard", font=("Arial", 10, "bold"), bg="#B5960E", fg="white",
+                             cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=dashboardIcon, compound=TOP, padx=15, pady=15)
+
+            buttonDashboard.place(x=760, y=250)
+
+            favoritesIcon = Image.open("assets/images/Home/favorites_icon.png")
+
+            favoritesIcon = favoritesIcon.resize((80, 80))
+
+            favoritesIcon = ImageTk.PhotoImage(favoritesIcon)
+
+            buttonFavorites = Button(canvasHome, text="Favorites", font=("Arial", 10, "bold"), bg="#B5960E", fg="white",
+                             cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=favoritesIcon, compound=TOP, padx=15, pady=15)
+
+            buttonFavorites.place(x=960, y=250)
+
+        elif(checkLoggedUserRole(user["email"]) == "regular"):
+            
+            favoritesIcon = Image.open("assets/images/Home/favorites_icon.png")
+
+            favoritesIcon = favoritesIcon.resize((100, 100))
+
+            favoritesIcon = ImageTk.PhotoImage(favoritesIcon)
+
+            buttonFavorites = Button(canvasHome, text="Favorites", font=("Arial", 13, "bold"), bg="#B5960E", fg="white",
+                             cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=favoritesIcon, compound=TOP, padx=25, pady=25)
+
+            buttonFavorites.place(x=250, y=250)
+
+            recipesIcon = Image.open("assets/images/Home/recipes_icon.png")
+
+            recipesIcon = recipesIcon.resize((100, 100))
+
+            recipesIcon = ImageTk.PhotoImage(recipesIcon)
+
+            buttonRecipes = Button(canvasHome, text="Recipes", font=("Arial", 13, "bold"), bg="#B5960E", fg="white",
+                           cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=recipesIcon, compound=TOP, padx=25, pady=25)
+
+            buttonRecipes.place(x=560, y=250)
+
+            dashboardIcon = Image.open("assets/images/Home/dashboard_icon.png")
+
+            dashboardIcon = dashboardIcon.resize((100, 100))
+
+            dashboardIcon = ImageTk.PhotoImage(dashboardIcon)
+
+            buttonDashboard = Button(canvasHome, text="Dashboard", font=("Arial", 13, "bold"), bg="#B5960E", fg="white",
+                             cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=dashboardIcon, compound=TOP, padx=25, pady=25)
+
+            buttonDashboard.place(x=860, y=250)
 
     Window.mainloop()

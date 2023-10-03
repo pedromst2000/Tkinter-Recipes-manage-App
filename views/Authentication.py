@@ -7,7 +7,7 @@ from views.Home import HomeView
 
 # global variable
 isLogged = False  # this variable will be used to check if the user is logged or not
-isNewUser = False  # this variable will be used to check if the user is registering or not
+isRegister = False  # this variable will be used to check if the user is registering or not
 
 
 def loginView(Window):
@@ -220,7 +220,7 @@ def registerView(Window):
 
 def checkRegister(username, email, password, confirmPassword, registerWindow, Window):
 
-    global isLogged, isNewUser
+    global isLogged, isRegister
 
     if (username == "" or email == "" or password == "" or confirmPassword == ""):
         return messagebox.showerror("Error", "All fields are required")
@@ -253,12 +253,12 @@ def checkRegister(username, email, password, confirmPassword, registerWindow, Wi
                 "Success", f"We're glad you join our family Chief {username}")
 
             isLogged = True
-            isNewUser = True
+            isRegister = True
 
             registerWindow.destroy()
             Window.destroy()
 
-            HomeView(newUser, isLogged, isNewUser)
+            HomeView(newUser, isLogged, isRegister)
 
 
 def openSignUpLink(event, loginWindow, Window):
