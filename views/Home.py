@@ -1,6 +1,6 @@
 from tkinter import messagebox, Tk, Frame, TOP, X, NW, Canvas, Image, Button
 from PIL import ImageTk, Image
-from models.Users import checkLoggedUserRole, checkLoggedUserIsBlocked
+from models.Users import checkLoggedUserRole, checkLoggedUserIsBlocked, get_user
 from classes.Navbar import NavbarWidget
 
 
@@ -16,7 +16,6 @@ def HomeView(user, isLogged, isRegister):
 
     navbar = NavbarWidget(
         Window, 
-        user["avatar"], # avatarUser 
         "assets/images/Home/notification.png", # notificationIcon
         "assets/images/Home/exit_app.png", # exitAppIcon
         user

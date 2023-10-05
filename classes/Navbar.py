@@ -1,11 +1,11 @@
 from tkinter import Frame, TOP, X, NW, Canvas, Image
 from PIL import ImageTk, Image
-from views.Profile.Profile import ProfileView
+from views.Profile import ProfileView
+from models.Users import get_user
 
 class NavbarWidget:
-    def __init__(self, Window, avatarUser, notificationIcon, exitAppIcon, user):
+    def __init__(self, Window, notificationIcon, exitAppIcon, user):
         self.Window = Window
-        self.avatarUser = avatarUser
         self.notificationIcon = notificationIcon
         self.exitAppIcon = exitAppIcon
         self.user = user
@@ -15,12 +15,11 @@ class NavbarWidget:
         navbar = Frame(self.Window, bg="#E5B714", height=100)
         navbar.pack(side=TOP, fill=X)
 
- 
         canvasAvatar = Canvas(navbar, height=70, width=70, highlightthickness=0, bg="#E5B714", cursor="hand2")
 
         canvasAvatar.place(x=20, y=15)
 
-        avatar = Image.open(self.avatarUser)
+        avatar = Image.open(get_user(self.user["email"])["avatar"])
 
         avatar = avatar.resize((70, 70))
 
@@ -52,3 +51,5 @@ class NavbarWidget:
         canvasAvatar.bind("<Button-1>", lambda event: ProfileView(self.Window, self.user))
 
         canvasExitApp.create_image(0, 0, anchor=NW, image=self.exitApp)
+
+    

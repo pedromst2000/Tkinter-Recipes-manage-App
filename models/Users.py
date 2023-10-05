@@ -109,7 +109,7 @@ def save_avatar(email, avatar):
 
     for user in users:
         if user["email"] == email: # if the email exists in the database
-            user["avatar"] = avatar # update the avatar of the user
+            user["avatar"] = f"assets/images/Profile/{avatar}" # update the avatar of the user
             user = User(user["username"], user["email"], user["password"], user["role"], user["avatar"], user["isBlocked"]) 
             user.update_user() # update the user in the database
             return True # return True if the avatar was updated successfully
