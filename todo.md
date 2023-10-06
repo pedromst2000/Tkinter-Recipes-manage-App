@@ -21,7 +21,7 @@ User Stories - Requirements - Features
 - []  Only the admin can manage the regular users
 - []  Only the admin can configure the notifications
 - []  The admin should have a list of the categories of the recipes wich should be dynamic (add or delete categories of recipes)
-- []  The regular user should have the possibility to edit his profile (change password, change avatar) --
+- [X]  The regular user should have the possibility to edit his profile (change password, change avatar)
 - []  The regular user should have the possibility to delete his account on his profile page --
 - []  An user should be able to add recipes to the catalog
 - []  An user should be able to delete his own recipes

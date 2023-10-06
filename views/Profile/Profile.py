@@ -1,7 +1,7 @@
 from tkinter import Toplevel, Button, Canvas, NW, X, TOP, Frame
-from models.Users import change_password, save_avatar, delete_account, get_user
+from models.Users import save_avatar, delete_account, get_user
+from views.Profile.ChangePassword import changePassword
 from tkinter import messagebox, filedialog
-import tkinter as tk
 import os
 from PIL import ImageTk, Image
 
@@ -30,7 +30,6 @@ def changeAvatar(canvasAvatar):
 
     image = image_path  # assigning the global variable image to the image_path
 
-
 def saveAvatar(user):
 
     global image
@@ -47,21 +46,37 @@ def saveAvatar(user):
 
         with open(save_path, "wb") as file:
             file.write(content)
-        messagebox.showinfo("Success", "Avatar saved successfully, restart the app to see the changes")
+        messagebox.showinfo(
+            "Success", "Avatar saved successfully, restart the app to see the changes")
 
         save_avatar(user["email"], avatar)  # save the avatar in the database)
 
         file.close()
 
+def deleteAccount(user, profileWindow, Window):
+
+    confirmDelete = messagebox.askyesno(
+        "Confirm", "Are you sure you want to delete your account?")
+    
+    if confirmDelete:
+        delete_account(user["email"])
+
+        messagebox.showinfo("Success", "Account deleted successfully")
+
+        profileWindow.destroy()
+
+        Window.destroy()
+
 
 def ProfileView(Window, user):
 
-    Window.withdraw() # to close the main window 
-
-    # open new window
+   # open new window
     profileWindow = Toplevel(Window)
 
     profileWindow.title(f"CraftingCook - Profile - {user['username']}")
+
+    # hide the main window
+    Window.withdraw()
 
     profileWindow.iconbitmap("assets/CraftingCook.ico")
 
@@ -218,6 +233,17 @@ def ProfileView(Window, user):
     btnChangeAvatar.bind(
         "<Button-1>", lambda event: changeAvatar(canvasAvatar))
 
+    # bind - onCLick will call the saveAvatar function
     btnSaveAvatar.bind("<Button-1>", lambda event: saveAvatar(user))
 
+    # bind - onCLick will call the changePassword function
+    btnChangePassword.bind("<Button-1>", lambda event: changePassword(user))
+
+    # bind - onCLick will call the deleteAccount function
+    btnDeleteAccount.bind(
+        "<Button-1>", lambda event: deleteAccount(user, profileWindow, Window))
+
+    # open the main window when the profile window is closed
+    profileWindow.protocol("WM_DELETE_WINDOW", lambda: [
+                           profileWindow.destroy(), Window.deiconify()])
     profileWindow.mainloop()

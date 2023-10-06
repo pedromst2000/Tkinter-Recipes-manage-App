@@ -1,6 +1,6 @@
 from tkinter import Frame, TOP, X, NW, Canvas, Image
 from PIL import ImageTk, Image
-from views.Profile import ProfileView
+from views.Profile.Profile import ProfileView
 from models.Users import get_user
 
 class NavbarWidget:

@@ -1,6 +1,6 @@
 from tkinter import messagebox, Tk, Frame, TOP, X, NW, Canvas, Image, Button
 from PIL import ImageTk, Image
-from models.Users import checkLoggedUserRole, checkLoggedUserIsBlocked, get_user
+from models.Users import checkLoggedUserRole, checkLoggedUserIsBlocked
 from classes.Navbar import NavbarWidget
 
 
