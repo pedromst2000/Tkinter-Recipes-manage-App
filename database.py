@@ -52,21 +52,14 @@ class Database:
         # )
 
     def create_user(self, user):  # add a new user to the database
-        file = open("database/users.txt", "a", encoding="utf-8")
+       
+       file = open("database/users.txt", "a", encoding="utf-8")
 
-        # cecking if there is an empty line at the end of the file
-        if (file.readlines()[-1] != "\n"):
-            file.write("\n")
-            file.write(
-                f"{user.username};{user.email};{user.password};{user.role};{user.avatar};{user.isBlocked}")
-        else:
-            # if there is an empty line at the end of the file, don't add another one
-            file.write(
-                f"{user.username};{user.email};{user.password};{user.role};{user.avatar};{user.isBlocked}\n")
-        
-
-
-        file.close()
+       file.write(
+            f"{user.username};{user.email};{user.password};{user.role};{user.avatar};{user.isBlocked}\n")
+       
+       file.close()
+       
 
     def update_user(self, user):
 
@@ -89,6 +82,7 @@ class Database:
         file.close()
 
     def delete_user(self, user):
+
         file = open("database/users.txt", "r", encoding="utf-8")
 
         lines = file.readlines()
@@ -98,11 +92,8 @@ class Database:
         file = open("database/users.txt", "w+", encoding="utf-8")
 
         for line in lines:
-            # delete by the email or username
             if line.split(";")[0] != user.username and line.split(";")[1] != user.email:
-                # delete the line without leaving a blank line
                 file.write(line)
 
-
-
-        file.close()
+        file.close()                
+       

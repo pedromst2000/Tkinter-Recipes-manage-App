@@ -5,6 +5,8 @@ User Stories - Requirements - Features
 
 -- to be done in the next commits
 
+=> When deleting an user in the file, remove the line deleted to not have empty line in the end of the file
+
 - [X]  The users authenticate on the app with their account : email and password (login)
 - [X]  if the user doesn't have an account, he can sign up with the following information: username, email and password 
 - [X] The user can acess the sign up page trought 'link' that will open the sign up window and close the login window 
@@ -22,7 +24,7 @@ User Stories - Requirements - Features
 - []  Only the admin can configure the notifications
 - []  The admin should have a list of the categories of the recipes wich should be dynamic (add or delete categories of recipes)
 - [X]  The regular user should have the possibility to edit his profile (change password, change avatar)
-- []  The regular user should have the possibility to delete his account on his profile page --
+- [X]  The regular user should have the possibility to delete his account on his profile page
 - []  An user should be able to add recipes to the catalog
 - []  An user should be able to delete his own recipes
 - []  A recipe should have atleast : title, preparation mode, estimated time of confection, image of the recipe, ingredients, category of the recipe (can have more than one category)

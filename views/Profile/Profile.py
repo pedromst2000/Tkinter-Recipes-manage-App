@@ -228,6 +228,11 @@ def ProfileView(Window, user):
         )
 
         btnDeleteAccount.place(x=328, y=400)
+         # bind - onCLick will call the deleteAccount function
+        btnDeleteAccount.bind(
+        "<Button-1>", lambda event: deleteAccount(user, profileWindow, Window))
+            # bind - onCLick will call the changePassword function
+        btnChangePassword.bind("<Button-1>", lambda event: changePassword(user))
 
     # bind - onCLick will call the changeAvatar function
     btnChangeAvatar.bind(
@@ -235,13 +240,6 @@ def ProfileView(Window, user):
 
     # bind - onCLick will call the saveAvatar function
     btnSaveAvatar.bind("<Button-1>", lambda event: saveAvatar(user))
-
-    # bind - onCLick will call the changePassword function
-    btnChangePassword.bind("<Button-1>", lambda event: changePassword(user))
-
-    # bind - onCLick will call the deleteAccount function
-    btnDeleteAccount.bind(
-        "<Button-1>", lambda event: deleteAccount(user, profileWindow, Window))
 
     # open the main window when the profile window is closed
     profileWindow.protocol("WM_DELETE_WINDOW", lambda: [
