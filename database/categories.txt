@@ -1,0 +1,6 @@
+#VEGAN;Vegan
+#FREEGLUTEN;Free Gluten
+#MEAT;Meat
+#FISH;Fish
+#DESSERTS;desserts
+#SOUPES;soupes

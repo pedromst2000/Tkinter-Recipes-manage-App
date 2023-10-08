@@ -19,10 +19,10 @@ User Stories - Requirements - Features
 - [X]  New user should have dummy profile picture
 - [X]  A logged User can acess to his profile page
 - [X]  The users should have two roles: regular and admin
-- []  Only the admin can manage the categories of the recipes (add or delete categories of recipes)
+- []  Only the admin can manage the categories of the recipes (add or delete categories of recipes) --
 - []  Only the admin can manage the regular users
 - []  Only the admin can configure the notifications
-- []  The admin should have a list of the categories of the recipes wich should be dynamic (add or delete categories of recipes)
+- []  The admin should have a list of the categories of the recipes wich should be dynamic (add or delete categories of recipes) --
 - [X]  The regular user should have the possibility to edit his profile (change password, change avatar)
 - [X]  The regular user should have the possibility to delete his account on his profile page
 - []  An user should be able to add recipes to the catalog

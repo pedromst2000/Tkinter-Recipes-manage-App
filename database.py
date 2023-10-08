@@ -2,6 +2,7 @@
 class Database:
 
     users = []
+    categories = []
     # recipes = []
     # favorites = []
     # comments = []
@@ -9,11 +10,13 @@ class Database:
 # constructor
     def __init__(self,
                  users,
+                 categories
                  #   recipes,
                  #   favorites,
                  #     comments
                  ):
         self.users = users
+        self.categories = categories
         # self.recipes = recipes
         # self.favorites = favorites
         # self.comments = comments
@@ -41,15 +44,22 @@ class Database:
 
         return self.users
 
-    # to check the type of the data in the list
-        # print(
-        #     type(self.users[0]["username"]),
-        #     type(self.users[0]["email"]),
-        #     type(self.users[0]["password"]),
-        #     type(self.users[0]["role"]),
-        #     type(self.users[0]["avatar"]),
-        #     type(self.users[0]["isBlocked"])
-        # )
+    def get_categories(self):
+            
+            file = open("database/categories.txt", "r", encoding="utf-8")
+    
+            lines = file.readlines()
+    
+            for line in lines:
+                category = line.split(";")
+                self.categories.append({
+                    "tag": category[0],
+                    "category": category[1],
+                })
+
+            file.close()
+
+            return self.categories
 
     def create_user(self, user):  # add a new user to the database
        
@@ -60,6 +70,14 @@ class Database:
        
        file.close()
        
+    def create_category(self, category):  # add a new category to the database
+        
+       file = open("database/category.txt", "a", encoding="utf-8")
+
+       file.write(
+            f"{category.tag};{category.category}\n")
+       
+       file.close()
 
     def update_user(self, user):
 
@@ -97,3 +115,19 @@ class Database:
 
         file.close()                
        
+    def delete_category(self, category):
+            
+            file = open("database/category.txt", "r", encoding="utf-8")
+    
+            lines = file.readlines()
+    
+            file.close()
+    
+            file = open("database/category.txt", "w+", encoding="utf-8")
+    
+            for line in lines:
+                if line.split(";")[0] != category.tag and line.split(";")[1] != category.category:
+                    file.write(line)
+    
+            file.close()
+    

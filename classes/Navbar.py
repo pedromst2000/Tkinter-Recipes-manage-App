@@ -27,7 +27,6 @@ class NavbarWidget:
 
         canvasAvatar.create_image(0, 0, anchor=NW, image=self.avatar)
 
-
         # bind - onCLick will call the ProfileView function with the window as parameter to be able to destroy it after the successful authentication
 
         canvasNotification = Canvas(navbar, height=50, width=50, highlightthickness=0,

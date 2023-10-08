@@ -2,9 +2,11 @@ from tkinter import messagebox, Tk, Frame, TOP, X, NW, Canvas, Image, Button
 from PIL import ImageTk, Image
 from models.Users import checkLoggedUserRole, checkLoggedUserIsBlocked
 from classes.Navbar import NavbarWidget
+from views.Manage import ManageView
 
 
 def HomeView(user, isLogged, isRegister):
+
     Window = Tk()
 
     Window.title("CraftingCook")
@@ -42,6 +44,7 @@ def HomeView(user, isLogged, isRegister):
     # rendering the menu view conditionally
     if((isLogged == True and isRegister == False) or (isLogged == True and isRegister == True)) :
        
+        # if is admin
         if(checkLoggedUserRole(user["email"]) == "admin"):
             manageIcon = Image.open("assets/images/Home/manage_icon.png")
 
@@ -96,6 +99,8 @@ def HomeView(user, isLogged, isRegister):
                              cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=favoritesIcon, compound=TOP, padx=15, pady=15)
 
             buttonFavorites.place(x=960, y=250)
+
+            buttonManage.bind("<Button-1>", lambda event: ManageView(user, Window))
 
         elif(checkLoggedUserRole(user["email"]) == "regular"):
             
