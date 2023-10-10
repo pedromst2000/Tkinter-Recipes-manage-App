@@ -54,7 +54,7 @@ class Database:
                 category = line.split(";")
                 self.categories.append({
                     "tag": category[0],
-                    "category": category[1],
+                    "name": category[1],
                 })
 
             file.close()
@@ -72,10 +72,10 @@ class Database:
        
     def create_category(self, category):  # add a new category to the database
         
-       file = open("database/category.txt", "a", encoding="utf-8")
+       file = open("database/categories.txt", "a", encoding="utf-8")
 
        file.write(
-            f"{category.tag};{category.category}\n")
+            f"{category.tag};{category.name}\n")
        
        file.close()
 
@@ -126,7 +126,7 @@ class Database:
             file = open("database/category.txt", "w+", encoding="utf-8")
     
             for line in lines:
-                if line.split(";")[0] != category.tag and line.split(";")[1] != category.category:
+                if line.split(";")[0] != category.tag and line.split(";")[1] != category.name:
                     file.write(line)
     
             file.close()

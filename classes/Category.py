@@ -4,12 +4,12 @@ class Category:
     
         # attributes
         tag = ""
-        category = ""
+        name = ""
     
         # constructor
-        def __init__(self, tag, category):
+        def __init__(self, tag, name):
             self.tag = tag
-            self.category = category
+            self.name = name
     
         # methods
         # add new instance of the Class Category
