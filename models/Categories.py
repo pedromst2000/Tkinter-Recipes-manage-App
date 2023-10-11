@@ -27,11 +27,12 @@ def checkTag(tag):
     db = Database(users=[], categories=[])
     categories = db.get_categories()
 
-    for category in categories:
-        if category["tag"] == tag:
-            return False
-        
-    return True # if the tag is not in the database
+    tags = [category["tag"] for category in categories]
+
+    if tag in tags:
+        return True
+    else:
+        return False
 
 # checking if the category is unique
 def checkCategory(_category_):
@@ -42,7 +43,7 @@ def checkCategory(_category_):
 
 
     if _category_.lower() in categories:
-        return False
-    else:
         return True
+    else:
+        return False
 

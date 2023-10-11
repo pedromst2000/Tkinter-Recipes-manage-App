@@ -15,30 +15,30 @@ def AddCategory(inputTag, inputCategory, treeview):
     if(tag == "" or name == ""):
          messagebox.showerror("Error", "Please fill all the fields")
     
-    # #check if the tag starts with # and Uppercase
-    # elif(not tag.startswith("#") or not tag.isupper()):
-    #     messagebox.showerror("Error", "The tag must start with # and be Uppercase eg: #TAG")
+    #check if the tag starts with # and Uppercase
+    elif(not tag.startswith("#") or not tag.isupper()):
+        messagebox.showerror("Error", "The tag must start with # and be Uppercase eg: #TAG")
 
-    # # checking if the tag already exists
-    # elif(checkTag(tag)):
-    #     messagebox.showerror("Error", "The tag already exists")
+    # checking if the tag already exists
+    elif(checkTag(tag) == True):
+        messagebox.showerror("Error", "The tag already exists")
 
     # checking if the category already exists
-    if(checkCategory(name)):
+    elif(checkCategory(name) == True):
         messagebox.showerror("Error", "The category already exists")    
     
-    # else:
-    #     # create the category
-    #     create_category(tag, name) ## add the category in the database
+    else:
+        # create the category
+        create_category(tag, name) ## add the category in the database
 
-    #     # insert the category in the treeview
-    #     treeview.insert("", tk.END, values=(tag, name))
+        # insert the category in the treeview
+        treeview.insert("", tk.END, values=(tag, name))
 
-    #     messagebox.showinfo("Success", "Category added successfully")
+        messagebox.showinfo("Success", "Category added successfully")
 
     #     # clear the input fields
-    #     inputTag.delete(0, tk.END)
-    #     inputCategory.delete(0, tk.END)
+        inputTag.delete(0, tk.END)
+        inputCategory.delete(0, tk.END)
 
 def RemoveCategory(treeview):
     

@@ -1,4 +1,0 @@
-#MAC;Meat
-#TRIAL;Fish
-#TRIAL;Hak
-#TRIAL;kaka
