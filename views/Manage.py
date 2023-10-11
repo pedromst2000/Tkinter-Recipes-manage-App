@@ -11,7 +11,6 @@ def AddCategory(inputTag, inputCategory, treeview):
     tag = inputTag.get()
     name = inputCategory.get()
 
- 
     if(tag == "" or name == ""):
          messagebox.showerror("Error", "Please fill all the fields")
     
@@ -36,7 +35,7 @@ def AddCategory(inputTag, inputCategory, treeview):
 
         messagebox.showinfo("Success", "Category added successfully")
 
-    #     # clear the input fields
+        # clear the input fields
         inputTag.delete(0, tk.END)
         inputCategory.delete(0, tk.END)
 
@@ -49,7 +48,7 @@ def RemoveCategory(treeview):
             category = treeview.item(treeview.selection()[0])["values"]
     
             # delete the category from the database
-            delete_category(category[0])
+            delete_category(category[0], category[1])
     
             # delete the category from the treeview
             treeview.delete(treeview.selection()[0])
@@ -58,7 +57,6 @@ def RemoveCategory(treeview):
         
     else:
         messagebox.showerror("Error", "Please select a category")
-
 
 def ManageView(user, Window):
 

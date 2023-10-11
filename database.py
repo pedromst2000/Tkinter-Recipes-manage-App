@@ -54,7 +54,7 @@ class Database:
                 category = line.split(";")
                 self.categories.append({
                     "tag": category[0],
-                    "name": category[1],
+                    "name": category[1].strip("\n")
                 })
 
             file.close()
@@ -117,13 +117,13 @@ class Database:
        
     def delete_category(self, category):
             
-            file = open("database/category.txt", "r", encoding="utf-8")
+            file = open("database/categories.txt", "r", encoding="utf-8")
     
             lines = file.readlines()
     
             file.close()
     
-            file = open("database/category.txt", "w+", encoding="utf-8")
+            file = open("database/categories.txt", "w+", encoding="utf-8")
     
             for line in lines:
                 if line.split(";")[0] != category.tag and line.split(";")[1] != category.name:
