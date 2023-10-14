@@ -64,7 +64,7 @@ def ManageView(user, Window):
 
     categories = get_categories()
 
-    manageWindow.title("CraftingCook")
+    manageWindow.title("CraftingCook - Manage")
 
     Window.withdraw()
 

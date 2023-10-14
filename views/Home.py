@@ -3,6 +3,7 @@ from PIL import ImageTk, Image
 from models.Users import checkLoggedUserRole, checkLoggedUserIsBlocked
 from classes.Navbar import NavbarWidget
 from views.Manage import ManageView
+from views.Recipes.RecipesCategory import RecipesCategoryView
 
 
 def HomeView(user, isLogged, isRegister):
@@ -102,6 +103,7 @@ def HomeView(user, isLogged, isRegister):
 
             buttonManage.bind("<Button-1>", lambda event: ManageView(user, Window))
 
+        # if is regular
         elif(checkLoggedUserRole(user["email"]) == "regular"):
             
             favoritesIcon = Image.open("assets/images/Home/favorites_icon.png")
@@ -136,5 +138,8 @@ def HomeView(user, isLogged, isRegister):
                              cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=dashboardIcon, compound=TOP, padx=25, pady=25)
 
             buttonDashboard.place(x=860, y=250)
+
+
+        buttonRecipes.bind("<Button-1>", lambda event: RecipesCategoryView(user, Window))
 
     Window.mainloop()

@@ -3,6 +3,9 @@ User Stories - Requirements - Features
 
 -- Improve the documentation of the Tkinter App
 
+-- In the end refactor the code (remove unecessary code)
+
+
 -- to be done in the next commits
 
 - [X]  The users authenticate on the app with their account : email and password (login)
@@ -25,8 +28,8 @@ User Stories - Requirements - Features
 - [X]  The regular user should have the possibility to delete his account on his profile page
 - []  An user should be able to add recipes to the catalog
 - []  An user should be able to delete his own recipes
-- []  A recipe should have atleast : title, preparation mode, estimated time of confection, image of the recipe, ingredients, category of the recipe (can have more than one category)
-- []  A recipe should be asscociated atleast to one category
+- []  A recipe should have atleast : title, preparation mode, estimated time of confection, image of the recipe, ingredients, category of the recipe (can have more than one category) --
+- []  A recipe should be asscociated atleast to one category --
 - []  An user can add , delete and edit his own recipes (only the owner of the recipe can edit or delete the recipe)
 - []  When the user add a recipe should be pending for approval of the admin
 - []  The admin should have a list with the recipes pending for approval in his profile (should be able to approve or delete the recipe)
@@ -34,12 +37,12 @@ User Stories - Requirements - Features
 - []  An user can create a list of his favorite recipes
 - []  In the user profile should be available the categories of the recipes that user most like
 - []  The user should be able to receive notifications of his favorite recipes when a new recipe is added to the catalog
-- []  The application should apresent the catalog of the recipes to the user (should apresent by default the most recent recipes)
-- []  The user should be able to filter the recipes by category
-- []  The user should be able to filter the recipes by title
-- []  The user should be able to filter the recipes by specific ingredient
-- []  The user should be able to filter the recipes by views
-- []  The catalog should be sorted by the number of views of the recipe for instance
+- []  The application should apresent the catalog of the recipes to the user (should apresent by default the most recent recipes) --
+- []  The user should be able to filter the recipes by category --
+- []  The user should be able to filter the recipes by title --
+- []  The user should be able to filter the recipes by specific ingredient --
+- []  The user should be able to filter the recipes by views --
+- []  The catalog should be sorted by the number of views of the recipe for instance --
 - []  An user can comment a recipe , by creating thread of comments (can have more than one comment of other users)
 - []  An user can like a recipe
 - []  The app should have a dashboard (painel) with the total recipes, total recipes by category
