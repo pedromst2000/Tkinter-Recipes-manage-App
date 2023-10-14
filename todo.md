@@ -5,6 +5,7 @@ User Stories - Requirements - Features
 
 -- In the end refactor the code (remove unecessary code)
 
+-- add the buttons of the recipes categories dynamically
 
 -- to be done in the next commits
 
