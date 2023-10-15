@@ -32,7 +32,7 @@ def RecipesCatalogView(selectedCategory, user, RecipesCategoryWindow):
     canvasRecipesCatalog = Canvas(RecipesCatalogWindow, height=650, width=1280)
     canvasRecipesCatalog.place(x=-2, y=100)
 
-    image = Image.open("assets/images/Recipes/Recipes_Catalog_background.png")
+    image = Image.open("assets/images/Recipes/Recipes_Catalog_Background.png")
     image = image.resize((1280, 650))
 
     image = ImageTk.PhotoImage(image)
