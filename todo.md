@@ -5,8 +5,6 @@ User Stories - Requirements - Features
 
 -- In the end refactor the code (remove unecessary code)
 
--- add the buttons of the recipes categories dynamically
-
 -- to be done in the next commits
 
 - [X]  The users authenticate on the app with their account : email and password (login)
@@ -30,7 +28,7 @@ User Stories - Requirements - Features
 - []  An user should be able to add recipes to the catalog
 - []  An user should be able to delete his own recipes
 - []  A recipe should have atleast : title, preparation mode, estimated time of confection, image of the recipe, ingredients, category of the recipe (can have more than one category) --
-- []  A recipe should be asscociated atleast to one category --
+- []  A recipe should be associated atleast to one category --
 - []  An user can add , delete and edit his own recipes (only the owner of the recipe can edit or delete the recipe)
 - []  When the user add a recipe should be pending for approval of the admin
 - []  The admin should have a list with the recipes pending for approval in his profile (should be able to approve or delete the recipe)

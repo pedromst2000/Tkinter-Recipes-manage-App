@@ -18,9 +18,9 @@ def HomeView(user, isLogged, isRegister):
     Window.resizable(0, 0)
 
     navbar = NavbarWidget(
-        Window, 
-        "assets/images/Home/notification.png", # notificationIcon
-        "assets/images/Home/exit_app.png", # exitAppIcon
+        Window,
+        "assets/images/Home/notification.png",  # notificationIcon
+        "assets/images/Home/exit_app.png",  # exitAppIcon
         user
     )
     navbar.create_widget()
@@ -41,12 +41,20 @@ def HomeView(user, isLogged, isRegister):
     canvasHome.create_text(640, 125, text="Your Kitchen best friend", font=(
         "Arial", 20, "normal"), fill="#ffffff")
 
+    # if is a new user
+    if (isRegister == True):
+        messagebox.showinfo("Welcome to CraftingCook",
+                            "Some tips to get started:\n\n"
+                            "- You can access your profile throuth the avatar icon on the navbar\n\n"
+                            "- You can access your notifications throuth 🔔 icon on the navbar\n\n"
+                            "Enjoy CraftingCook! 🍳"
+                            )
 
     # rendering the menu view conditionally
-    if((isLogged == True and isRegister == False) or (isLogged == True and isRegister == True)) :
-       
+    if ((isLogged == True and isRegister == False) or (isLogged == True and isRegister == True)):
+
         # if is admin
-        if(checkLoggedUserRole(user["email"]) == "admin"):
+        if (checkLoggedUserRole(user["email"]) == "admin"):
             manageIcon = Image.open("assets/images/Home/manage_icon.png")
 
             manageIcon = manageIcon.resize((80, 80))
@@ -54,7 +62,7 @@ def HomeView(user, isLogged, isRegister):
             manageIcon = ImageTk.PhotoImage(manageIcon)
 
             buttonManage = Button(canvasHome, text="Manage", font=("Arial", 10, "bold"), bg="#B5960E", fg="white",
-                          cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=manageIcon, compound=TOP, padx=15, pady=15)
+                                  cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=manageIcon, compound=TOP, padx=15, pady=15)
             buttonManage.place(x=160, y=250)
 
             settingsIcon = Image.open("assets/images/Home/settings_icon.png")
@@ -64,7 +72,7 @@ def HomeView(user, isLogged, isRegister):
             settingsIcon = ImageTk.PhotoImage(settingsIcon)
 
             buttonSettings = Button(canvasHome, text="Settings", font=("Arial", 10, "bold"), bg="#B5960E", fg="white",
-                            cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=settingsIcon, compound=TOP, padx=15, pady=15)
+                                    cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=settingsIcon, compound=TOP, padx=15, pady=15)
 
             buttonSettings.place(x=360, y=250)
 
@@ -75,7 +83,7 @@ def HomeView(user, isLogged, isRegister):
             recipesIcon = ImageTk.PhotoImage(recipesIcon)
 
             buttonRecipes = Button(canvasHome, text="Recipes", font=("Arial", 10, "bold"), bg="#B5960E", fg="white",
-                           cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=recipesIcon, compound=TOP, padx=15, pady=15)
+                                   cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=recipesIcon, compound=TOP, padx=15, pady=15)
 
             buttonRecipes.place(x=560, y=250)
 
@@ -86,7 +94,7 @@ def HomeView(user, isLogged, isRegister):
             dashboardIcon = ImageTk.PhotoImage(dashboardIcon)
 
             buttonDashboard = Button(canvasHome, text="Dashboard", font=("Arial", 10, "bold"), bg="#B5960E", fg="white",
-                             cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=dashboardIcon, compound=TOP, padx=15, pady=15)
+                                     cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=dashboardIcon, compound=TOP, padx=15, pady=15)
 
             buttonDashboard.place(x=760, y=250)
 
@@ -97,15 +105,16 @@ def HomeView(user, isLogged, isRegister):
             favoritesIcon = ImageTk.PhotoImage(favoritesIcon)
 
             buttonFavorites = Button(canvasHome, text="Favorites", font=("Arial", 10, "bold"), bg="#B5960E", fg="white",
-                             cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=favoritesIcon, compound=TOP, padx=15, pady=15)
+                                     cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=favoritesIcon, compound=TOP, padx=15, pady=15)
 
             buttonFavorites.place(x=960, y=250)
 
-            buttonManage.bind("<Button-1>", lambda event: ManageView(user, Window))
+            buttonManage.bind(
+                "<Button-1>", lambda event: ManageView(user, Window))
 
         # if is regular
-        elif(checkLoggedUserRole(user["email"]) == "regular"):
-            
+        elif (checkLoggedUserRole(user["email"]) == "regular"):
+
             favoritesIcon = Image.open("assets/images/Home/favorites_icon.png")
 
             favoritesIcon = favoritesIcon.resize((100, 100))
@@ -113,7 +122,7 @@ def HomeView(user, isLogged, isRegister):
             favoritesIcon = ImageTk.PhotoImage(favoritesIcon)
 
             buttonFavorites = Button(canvasHome, text="Favorites", font=("Arial", 13, "bold"), bg="#B5960E", fg="white",
-                             cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=favoritesIcon, compound=TOP, padx=25, pady=25)
+                                     cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=favoritesIcon, compound=TOP, padx=25, pady=25)
 
             buttonFavorites.place(x=250, y=250)
 
@@ -124,7 +133,7 @@ def HomeView(user, isLogged, isRegister):
             recipesIcon = ImageTk.PhotoImage(recipesIcon)
 
             buttonRecipes = Button(canvasHome, text="Recipes", font=("Arial", 13, "bold"), bg="#B5960E", fg="white",
-                           cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=recipesIcon, compound=TOP, padx=25, pady=25)
+                                   cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=recipesIcon, compound=TOP, padx=25, pady=25)
 
             buttonRecipes.place(x=560, y=250)
 
@@ -135,11 +144,11 @@ def HomeView(user, isLogged, isRegister):
             dashboardIcon = ImageTk.PhotoImage(dashboardIcon)
 
             buttonDashboard = Button(canvasHome, text="Dashboard", font=("Arial", 13, "bold"), bg="#B5960E", fg="white",
-                             cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=dashboardIcon, compound=TOP, padx=25, pady=25)
+                                     cursor="hand2", width=100, height=120, activebackground="#D1A711", activeforeground="#ffffff", bd=0, image=dashboardIcon, compound=TOP, padx=25, pady=25)
 
             buttonDashboard.place(x=860, y=250)
 
-
-        buttonRecipes.bind("<Button-1>", lambda event: RecipesCategoryView(user, Window))
+        buttonRecipes.bind(
+            "<Button-1>", lambda event: RecipesCategoryView(user, Window))
 
     Window.mainloop()

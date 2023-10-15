@@ -1,3 +1,4 @@
+#ALL;All Recipes
 #VEGAN;Vegan
 #FREEGLUTEN;Free Gluten
 #MEAT;Meat
