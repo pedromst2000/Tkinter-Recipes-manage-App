@@ -3,23 +3,26 @@ class Database:
 
     users = []
     categories = []
-    # recipes = []
+    recipes = []
     # favorites = []
     # comments = []
+    # ingredients = []
 
 # constructor
     def __init__(self,
                  users,
-                 categories
-                 #   recipes,
+                 categories,
+                   recipes,
                  #   favorites,
-                 #     comments
+                 #     comments,
+                    #     ingredients
                  ):
         self.users = users
         self.categories = categories
-        # self.recipes = recipes
+        self.recipes = recipes
         # self.favorites = favorites
         # self.comments = comments
+        # self.ingredients = ingredients
 
 # methods
     def get_users(self):
@@ -60,6 +63,30 @@ class Database:
             file.close()
 
             return self.categories
+
+    def get_recipes(self):
+                
+                file = open("database/recipes.txt", "r", encoding="utf-8")
+        
+                lines = file.readlines()
+        
+                for line in lines:
+                    recipe = line.split(";")
+                    self.recipes.append({
+                       "id": recipe[0],
+                       "createdAt": recipe[1], 
+                       "TAG": recipe[2], # TAG => is the category associated with the recipe
+                       "creator": recipe[3],
+                       "title": recipe[4],
+                       "prepMode": recipe[5], # prepMode => is the preparation mode of the recipe
+                       "estimatedTime": recipe[6], # estimatedTime => is the estimated time to prepare the recipe (confection time)
+                       "image": recipe[7],
+                       "views": recipe[8].strip("\n")
+                    })
+    
+                file.close()
+    
+                return self.recipes
 
     def create_user(self, user):  # add a new user to the database
        

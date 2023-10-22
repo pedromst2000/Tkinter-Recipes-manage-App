@@ -1,6 +1,5 @@
 User Stories - Requirements - Features
 
-
 -- Improve the documentation of the Tkinter App
 
 -- In the end refactor the code (remove unecessary code)

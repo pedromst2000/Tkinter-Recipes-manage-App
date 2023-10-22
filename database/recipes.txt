@@ -1,0 +1,1 @@
+id;createdAt;TAG;creator;title;preparation_mode;estimated_time_confection;image;views
