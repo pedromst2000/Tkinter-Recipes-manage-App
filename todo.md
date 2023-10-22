@@ -4,6 +4,8 @@ User Stories - Requirements - Features
 
 -- In the end refactor the code (remove unecessary code)
 
+-- code refactor => for each file include in the first line the identifiers of each column for better readability
+
 -- to be done in the next commits
 
 - [X]  The users authenticate on the app with their account : email and password (login)
