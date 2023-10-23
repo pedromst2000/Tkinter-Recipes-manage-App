@@ -4,7 +4,7 @@ User Stories - Requirements - Features
 
 -- In the end refactor the code (remove unecessary code)
 
--- code refactor => for each file include in the first line the identifiers of each column for better readability
+-- do data structure of the database (ERD)
 
 -- to be done in the next commits
 
@@ -35,7 +35,7 @@ User Stories - Requirements - Features
 - []  The admin should have a list with the recipes pending for approval in his profile (should be able to approve or delete the recipe)
 - []  When the admin approve the recipe, the recipe should be available on the catalog
 - []  An user can create a list of his favorite recipes
-- []  In the user profile should be available the categories of the recipes that user most like
+- []  In the user profile should be available the categories of the recipes
 - []  The user should be able to receive notifications of his favorite recipes when a new recipe is added to the catalog
 - []  The application should apresent the catalog of the recipes to the user (should apresent by default the most recent recipes) --
 - []  The user should be able to filter the recipes by category --
