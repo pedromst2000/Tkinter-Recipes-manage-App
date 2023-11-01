@@ -2,9 +2,14 @@ User Stories - Requirements - Features
 
 -- Improve the documentation of the Tkinter App
 
--- In the end refactor the code (remove unecessary code)
+-- In the end refactor the code (remove unecessary code) => Refactor
 
--- code refactor => for each file include in the first line the identifiers of each column for better readability
+--!! Add Recipe Image Feature !!-- => Feature
+-- add the image from other device to the directory of the app with the follow pattern name_of_the_recipe.jpg
+-- lower case and replace spaces with underscore
+
+--!! Testing the recipes from one category !!-- => Debugging
+
 
 -- to be done in the next commits
 
