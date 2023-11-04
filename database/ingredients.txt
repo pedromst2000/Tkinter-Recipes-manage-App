@@ -42,3 +42,137 @@
 5;1/2 xícara de azeite de oliva
 5;2 colheres de sopa de levedura nutricional
 5;Sal e pimenta a gosto
+6;4 peitos de frango desossados e sem pele
+6;2 abacates maduros
+6;2 colheres de sopa de azeite de oliva
+6;Suco de 1 limão
+6;2 dentes de alho, picados
+6;Sal e pimenta a gosto
+6;Ervas frescas (como coentro ou salsa) para decorar
+7;1 xícara de arroz para risoto (certifique-se de que seja sem glúten)
+7;500g de cogumelos, fatiados
+7;1 cebola, picada
+7;2 dentes de alho, picados
+7;4 xícaras de caldo de vegetais sem glúten
+7;1/2 xícara de vinho branco
+7;2 colheres de sopa de azeite de oliva
+7;Sal e pimenta a gosto
+7;Queijo vegano sem glúten (opcional)
+8;4 filés de salmão
+8;Suco de 1 limão
+8;2 colheres de sopa de azeite de oliva
+8;2 dentes de alho, picados
+8;Ervas frescas (como salsa, cebolinha, ou manjericão), picadas
+8;Sal e pimenta a gosto
+9;1 xícara de quinoa
+9;2 xícaras de água
+9;Vegetais de sua escolha (abobrinha, cenoura, pimento vermelho, cebola, etc.)
+9;Azeite de oliva
+9;Sal e pimenta a gosto
+9;Molho de sua preferência (vinagrete, molho de tahine, etc.)
+10;Folhas de alface grandes
+10;1 lata de grão-de-bico, escorrido e enxaguado
+10;1/2 cebola roxa, picada
+10;1 tomate, picado
+10;1/4 de xícara de pepino, picado
+10;1/4 de xícara de azeitonas pretas, picadas
+10;Molho de tahine ou molho de sua preferência
+11;500g de peito de frango, cortado em cubos
+11;2 colheres de sopa de óleo de coco
+11;1 cebola, picada
+11;2 dentes de alho, picados
+11;2 colheres de sopa de pasta de curry
+11;1 lata de leite de coco
+11;Sal e pimenta a gosto
+11;Coentro fresco picado para decorar
+12;4 bifes de carne (como filé mignon)
+12;200g de cogumelos, fatiados
+12;1 cebola, picada
+12;2 dentes de alho, picados
+12;1/2 xícara de caldo de carne
+12;1/4 de xícara de creme de leite
+12;Sal e pimenta a gosto
+12;Azeite de oliva
+12;Ervas frescas para decorar (como tomilho)
+13;500g de carne de sua escolha (como carne de boi, porco, ou frango), cortada em cubos
+13;1/4 de xícara de molho de soja
+13;2 colheres de sopa de azeite de oliva
+13;2 dentes de alho, picados
+13;Suco de 1 limão
+13;Pimentões, cebola e tomate cereja para espetar
+13;Sal e pimenta a gosto
+14;500g de carne de porco (como costelas, lombo ou carne desfiada)
+14;1 xícara de molho barbecue sem glúten
+14;1 cebola, picada
+14;2 dentes de alho, picados
+14;Sal e pimenta a gosto
+14;Azeite de oliva
+15;4 peitos de frango
+15;Suco de 2 limões
+15;2 colheres de sopa de azeite de oliva
+15;Ervas frescas (como tomilho, alecrim, ou salsa), picadas
+15;Sal e pimenta a gosto
+16;4 filés de salmão
+16;2 colheres de sopa de mostarda
+16;2 colheres de sopa de mel
+16;Suco de 1 limão
+16;Sal e pimenta a gosto
+16;Azeite de oliva
+17;4 filés de tilápia
+17;Suco de 1 limão
+17;2 colheres de sopa de azeite de oliva
+17;Ervas frescas (como tomilho, salsa, ou alecrim), picadas
+17;Sal e pimenta a gosto
+18;4 filés de peixe branco (como linguado, pargo ou robalo)
+18;2 batatas, cortadas em rodelas finas
+18;1 abobrinha, cortada em rodelas
+18;1 pimentão vermelho, cortado em tiras
+18;1 cebola, cortada em rodelas
+18;Suco de 1 limão
+18;Azeite de oliva
+18;Sal e pimenta a gosto
+18;Ervas frescas (como manjericão, tomilho, ou salsa), para decorar
+19;500g de peixe branco fresco, cortado em cubos
+19;Suco de 4 limões
+19;1 cebola roxa, cortada em rodelas finas
+19;1 pimentão vermelho, picado
+19;1 pimenta dedo-de-moça, sem sementes e picada
+19;Coentro fresco picado
+19;Sal e pimenta a gosto
+19;Milho, batata-doce ou chips de banana verde (opcional, para servir)
+20;200g de chocolate amargo sem glúten
+20;1/2 xícara de manteiga sem sal
+20;1 xícara de açúcar
+20;3 ovos
+20;1 colher de chá de extrato de baunilha
+20;1/2 xícara de farinha de amêndoas
+20;1/4 de xícara de cacau em pó sem açúcar
+20;1/2 colher de chá de sal
+20;1/2 xícara de nozes ou nozes-pecãs picadas (opcional)
+21;1/4 de xícara de sementes de chia
+21;1 xícara de leite de amêndoas (ou outro leite vegetal)
+21;1 colher de sopa de xarope de bordo ou agave
+21;1/2 colher de chá de extrato de baunilha
+21;Frutas frescas (como morangos, mirtilos, ou kiwis) para a cobertura
+22;500g de abóbora, descascada e cortada em cubos
+22;3 cenouras, descascadas e cortadas em rodelas
+22;1 cebola, picada
+22;2 dentes de alho, picados
+22; batata, descascada e cortada em cubos
+22;4 xícaras de caldo de vegetais
+22;1 colher de chá de cominho em pó
+22;1 colher de chá de canela em pó
+22;Sal e pimenta a gosto
+22;Azeite de oliva
+22;Sementes de abóbora torradas (opcional, para decorar)
+23;1 xícara de lentilhas verdes
+23;1 cebola, picada
+23;2 cenouras, picadas
+23;2 talos de aipo, picados
+23;2 dentes de alho, picados
+23;1 colher de chá de cominho em pó
+23;1 colher de chá de açafrão em pó
+23;4 xícaras de caldo de vegetais
+23;Sal e pimenta a gosto
+23;Azeite de oliva
+23;Folhas de coentro fresco para decorar (opcional)
