@@ -3,21 +3,19 @@ from database import Database
 class Category:
     
         # attributes
-        tag = ""
-        name = ""
+        category = ""
     
         # constructor
-        def __init__(self, tag, name):
-            self.tag = tag
-            self.name = name
-    
+        def __init__(self, category):
+            self.category = category
+
         # methods
         # add new instance of the Class Category
         def add_category(self):
-            db = Database(users=[],categories=[]) 
+            db = Database(users=[],categories=[], recipes=[]) 
             db.create_category(self)
        
         # delete an instance of the Class Category
         def delete_category(self):
-            db = Database(users=[],categories=[])
+            db = Database(users=[],categories=[], recipes=[])
             db.delete_category(self)

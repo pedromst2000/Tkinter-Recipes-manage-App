@@ -1,4 +1,6 @@
 import re as regex
+from models.Recipes import get_recipes
+from database import Database
 isPasswordVisible = False
 
 # this function will check if the email is valid with regex
@@ -99,4 +101,16 @@ def manageVisibility(ImageTk, Image, canvasManagePassword, NW, inputPassword, X,
     else:
         # if the password input is empty, the canvas will be hidden and not showing any icon (either hide or show password icon)
         canvasManagePassword.place_forget()
+
+
+def get_recipes_by_tag(selectedCategory):
+    
+    recipes = get_recipes()
+    recipes_by_category = []
+
+    for recipe in recipes:
+        if (recipe["category"] == selectedCategory):
+            recipes_by_category.append(recipe)
+
+    return recipes_by_category
 

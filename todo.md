@@ -4,6 +4,8 @@ User Stories - Requirements - Features
 
 -- In the end refactor the code (remove unecessary code) => Refactor
 
+-- Docstring for the functions => Refactor
+
 --!! Add Recipe Image Feature !!-- => Feature
 -- add the image from other device to the directory of the app with the follow pattern name_of_the_recipe.jpg
 -- lower case and replace spaces with underscore

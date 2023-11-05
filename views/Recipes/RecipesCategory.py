@@ -61,7 +61,7 @@ def RecipesCategoryView(user, Window):
 
     # insert the categories in the listbox
     for category in categories:
-        categoriesList.insert("end", category["name"])
+        categoriesList.insert("end", category["category"])
 
     # add scrollbar
     scrollbar = ttk.Scrollbar(RecipesCategoryWindow, orient="vertical", command=categoriesList.yview)

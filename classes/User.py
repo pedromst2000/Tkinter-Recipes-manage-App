@@ -23,15 +23,15 @@ class User:
     # methods
     # add new instance of the Class User
     def add_user(self):
-        db = Database(users=[], categories=[]) 
+        db = Database(users=[], categories=[], recipes=[]) 
         db.create_user(self)
 
     # update an instance of the Class User    
     def update_user(self):
-        db = Database(users=[], categories=[])
+        db = Database(users=[], categories=[], recipes=[])
         db.update_user(self)
     
     # delete an instance of the Class User
     def delete_user(self):
-        db = Database(users=[], categories=[])
+        db = Database(users=[], categories=[], recipes=[])
         db.delete_user(self)

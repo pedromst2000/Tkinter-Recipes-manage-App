@@ -12,10 +12,10 @@ class Database:
     def __init__(self,
                  users,
                  categories,
-                   recipes,
+                 recipes,
                  #   favorites,
                  #     comments,
-                    #     ingredients
+                 #     ingredients
                  ):
         self.users = users
         self.categories = categories
@@ -48,63 +48,65 @@ class Database:
         return self.users
 
     def get_categories(self):
-            
-            file = open("database/categories.txt", "r", encoding="utf-8")
-    
-            lines = file.readlines()
-    
-            for line in lines:
-                category = line.split(";")
-                self.categories.append({
-                    "tag": category[0],
-                    "name": category[1].strip("\n")
-                })
 
-            file.close()
+        file = open("database/categories.txt", "r", encoding="utf-8")
 
-            return self.categories
+        lines = file.readlines()
+
+        for line in lines:
+            category = line.split(";")
+            self.categories.append({
+                "category": category[0].strip("\n"),
+            })
+
+        file.close()
+
+        return self.categories
 
     def get_recipes(self):
-                
-                file = open("database/recipes.txt", "r", encoding="utf-8")
-        
-                lines = file.readlines()
-        
-                for line in lines:
-                    recipe = line.split(";")
-                    self.recipes.append({
-                       "id": recipe[0],
-                       "createdAt": recipe[1], 
-                       "TAG": recipe[2], # TAG => is the category associated with the recipe
-                       "creator": recipe[3],
-                       "title": recipe[4],
-                       "prepMode": recipe[5], # prepMode => is the preparation mode of the recipe
-                       "estimatedTime": recipe[6], # estimatedTime => is the estimated time to prepare the recipe (confection time)
-                       "image": recipe[7],
-                       "views": recipe[8].strip("\n")
-                    })
-    
-                file.close()
-    
-                return self.recipes
+
+        file = open("database/recipes.txt", "r", encoding="utf-8")
+
+        lines = file.readlines()
+
+        for line in lines:
+            recipe = line.split(";")
+            self.recipes.append({
+                "id": int(recipe[0]),
+                "createdAt": recipe[1],
+                # TAG => is the category associated with the recipe
+                "category": recipe[2],
+                "creator": recipe[3],
+                "title": recipe[4],
+                # prepMode => is the preparation mode of the recipe
+                "prepMode": recipe[5],
+                # estimatedTime => is the estimated time to prepare the recipe (confection time)
+                "estimatedTime": int(recipe[6]),
+                "image": recipe[7],
+                "views": int(recipe[8].strip("\n"))
+            })
+
+        file.close()
+
+        return self.recipes
 
     def create_user(self, user):  # add a new user to the database
-       
-       file = open("database/users.txt", "a", encoding="utf-8")
 
-       file.write(
+        file = open("database/users.txt", "a", encoding="utf-8")
+
+        file.write(
             f"{user.username};{user.email};{user.password};{user.role};{user.avatar};{user.isBlocked}\n")
-       
-       file.close()
-       
-    def create_category(self, category):  # add a new category to the database
-        
-       file = open("database/categories.txt", "a", encoding="utf-8")
 
-       file.write(
-            f"{category.tag};{category.name}\n")
-       
-       file.close()
+        file.close()
+
+    def create_category(self, category):  # add a new category to the database
+
+        file = open("database/categories.txt", "a", encoding="utf-8")
+
+        file.write(
+            f"{category.category}\n")
+
+        file.close()
 
     def update_user(self, user):
 
@@ -140,21 +142,20 @@ class Database:
             if line.split(";")[0] != user.username and line.split(";")[1] != user.email:
                 file.write(line)
 
-        file.close()                
-       
+        file.close()
+
     def delete_category(self, category):
-            
-            file = open("database/categories.txt", "r", encoding="utf-8")
-    
-            lines = file.readlines()
-    
-            file.close()
-    
-            file = open("database/categories.txt", "w+", encoding="utf-8")
-    
-            for line in lines:
-                if line.split(";")[0] != category.tag and line.split(";")[1] != category.name:
-                    file.write(line)
-    
-            file.close()
-    
+
+        file = open("database/categories.txt", "r", encoding="utf-8")
+
+        lines = file.readlines()
+
+        file.close()
+
+        file = open("database/categories.txt", "w+", encoding="utf-8")
+
+        for line in lines:
+            if line.split(";")[0] != category.category:
+                file.write(line)
+
+        file.close()

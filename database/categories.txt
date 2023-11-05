@@ -1,7 +1,7 @@
-#ALL;All Recipes
-#VEGAN;Vegan
-#FREEGLUTEN;Free Gluten
-#MEAT;Meat
-#FISH;Fish
-#DESSERTS;desserts
-#SOUPES;soupes
+All Recipes
+Vegan
+Free Gluten
+Meat
+Fish
+Desserts
+Soupes

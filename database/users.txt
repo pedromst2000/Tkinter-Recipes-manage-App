@@ -2,6 +2,6 @@ admin;admin@hotmail.com;admin;admin;assets/images/Profile/avatar_profile_placeho
 pedromst;pedromst@hotmail.com;123pedro;regular;assets/images/Profile/chief_avatar.jpg;False
 rita02;rita02@hotmail.com;123rita;regular;assets/images/Profile/avatar_profile_placeholder.jpg;False
 ana97;ana97@hotmail.com;123ana;regular;assets/images/Profile/avatar_profile_placeholder.jpg;False
-ricardodst;ricardodst@hotmail.com;regular;assets/images/Profile/avatar_profile_placeholder.jpg;False
-ricfazeres;ricfazeres@hotmail.com;regular;assets/images/Profile/avatar_profile_placeholder.jpg;False
+ricardodst;ricardodst@hotmail.com;123ricardo;regular;assets/images/Profile/avatar_profile_placeholder.jpg;False
+ricfazeres;ricfazeres@hotmail.com;123ric;regular;assets/images/Profile/avatar_profile_placeholder.jpg;False
 trollUser;toxic@hotmail.com;123troll;regular;assets/images/Profile/avatar_profile_placeholder.jpg;True

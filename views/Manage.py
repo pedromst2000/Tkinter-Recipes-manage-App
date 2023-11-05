@@ -1,42 +1,32 @@
 from tkinter import Tk, Frame, Canvas, Button, TOP, X, NW, Image, Label, Entry, messagebox, ttk, Toplevel
 import tkinter as tk
 from classes.Navbar import NavbarWidget
-from models.Categories import get_categories, create_category, delete_category, checkCategory, checkTag
+from models.Categories import get_categories, create_category, delete_category, checkCategory
 from models.Users import get_user
 
 
-def AddCategory(inputTag, inputCategory, treeview):
+def AddCategory(inputCategory, treeview):
 
     # get the tag and the category from the input fields
-    tag = inputTag.get()
-    name = inputCategory.get()
+    category = inputCategory.get()
 
-    if(tag == "" or name == ""):
+    if(category == ""):
          messagebox.showerror("Error", "Please fill all the fields")
     
-    #check if the tag starts with # and Uppercase
-    elif(not tag.startswith("#") or not tag.isupper()):
-        messagebox.showerror("Error", "The tag must start with # and be Uppercase eg: #TAG")
-
-    # checking if the tag already exists
-    elif(checkTag(tag) == True):
-        messagebox.showerror("Error", "The tag already exists")
-
     # checking if the category already exists
-    elif(checkCategory(name) == True):
+    if(checkCategory(category) == True):
         messagebox.showerror("Error", "The category already exists")    
     
     else:
         # create the category
-        create_category(tag, name) ## add the category in the database
+        create_category(category) ## add the category in the database
 
         # insert the category in the treeview
-        treeview.insert("", tk.END, values=(tag, name))
+        treeview.insert("", tk.END, values=(category))
 
         messagebox.showinfo("Success", "Category added successfully")
 
         # clear the input fields
-        inputTag.delete(0, tk.END)
         inputCategory.delete(0, tk.END)
 
 def RemoveCategory(treeview):
@@ -102,15 +92,11 @@ def ManageView(user, Window):
 
     btnDeleteCategory.place(x=100, y=125)
 
-    # treeview to display the categories columns 'Tag', 'Category'
-    treeview = ttk.Treeview(manageWindow, columns=("Tag", "Category"), show="headings", height=10)
+    # treeview to display the categories columns  'Category'
+    treeview = ttk.Treeview(manageWindow, columns=("Category"), show="headings", height=10)
 
-    # configure the columns
-    treeview.column("Tag", anchor=tk.CENTER, width=130)
     treeview.column("Category", anchor=tk.CENTER, width=130)
 
-    # configure the headings
-    treeview.heading("Tag", text="Tag", anchor=tk.CENTER)
     treeview.heading("Category", text="Category", anchor=tk.CENTER)
     
     treeview.place(x=50, y=190)
@@ -123,30 +109,7 @@ def ManageView(user, Window):
 
     # insert the categories in the treeview
     for category in categories:
-        treeview.insert("", tk.END, values=(category["tag"], category["name"]))
-
-    # label for the tag
-    lblTag = Label(
-        manageWindow,
-        text="Tag",
-        font=("Arial", 12, "bold"),
-        bg="#806B14",
-        fg="#ffffff"
-    )
-
-    # place above the input field
-    lblTag.place(x=120, y=430)
-
-    # entry for the tag 
-    inputTag = Entry(
-        manageWindow,
-        font=("Arial", 12, "bold"),
-        bg="#ffffff",
-        fg="#806B14",
-        bd=0,
-        width=15
-    )
-    inputTag.place(x=120, y=455)
+        treeview.insert("", tk.END, values=(category["category"]))
 
     # label for the category
     lblCategory = Label(
@@ -189,7 +152,7 @@ def ManageView(user, Window):
     btnAddCategory.place(x=105, y=570)
 
     # bind the button Onclick event to the AddCategory function
-    btnAddCategory.bind("<Button-1>", lambda event: AddCategory(inputTag, inputCategory, treeview))
+    btnAddCategory.bind("<Button-1>", lambda event: AddCategory(inputCategory, treeview))
 
     btnDeleteCategory.bind("<Button-1>", lambda event: RemoveCategory(treeview))
 
