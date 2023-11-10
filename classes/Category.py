@@ -12,10 +12,10 @@ class Category:
         # methods
         # add new instance of the Class Category
         def add_category(self):
-            db = Database(users=[],categories=[], recipes=[]) 
+            db = Database(users=[],categories=[], recipes=[], ingredients=[]) 
             db.create_category(self)
        
         # delete an instance of the Class Category
         def delete_category(self):
-            db = Database(users=[],categories=[], recipes=[])
+            db = Database(users=[],categories=[], recipes=[], ingredients=[])
             db.delete_category(self)

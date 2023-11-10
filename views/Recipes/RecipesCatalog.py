@@ -1,7 +1,7 @@
 from tkinter import messagebox, Tk, Frame, TOP, X, NW, Canvas, Image, Button, Toplevel, ttk, Listbox
 from PIL import ImageTk, Image
 from classes.Navbar import NavbarWidget
-from utils import get_recipes_by_tag
+from models.Recipes import get_recipes
 
 
 def RecipesCatalogView(selectedCategory, user, RecipesCategoryWindow):
@@ -40,7 +40,7 @@ def RecipesCatalogView(selectedCategory, user, RecipesCategoryWindow):
 
     canvasRecipesCatalog.create_image(0, 0, anchor=NW, image=image)
 
-    print(get_recipes_by_tag(selectedCategory))
+    print(get_recipes(selectedCategory))
 
     RecipesCatalogWindow.protocol("WM_DELETE_WINDOW", lambda: [
                            RecipesCatalogWindow.destroy(), RecipesCategoryWindow.deiconify()])

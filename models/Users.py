@@ -6,7 +6,7 @@ from database import *
 def login(email, password):
 
     # the class Database takes a list of users as a parameter since the constructor takes a list of users as a parameter (self, users)
-    db = Database(users=[], categories=[], recipes=[])
+    db = Database(users=[], categories=[], recipes=[], ingredients=[])
     users = db.get_users()
 
     for user in users:
@@ -22,7 +22,7 @@ def login(email, password):
 
 
 def checkLoggedUserRole(email):
-    db = Database(users=[], categories=[], recipes=[])
+    db = Database(users=[], categories=[], recipes=[], ingredients=[])
     users = db.get_users()
 
     for user in users:
@@ -33,7 +33,7 @@ def checkLoggedUserRole(email):
 
 
 def checkLoggedUserIsBlocked(email):
-    db = Database(users=[], categories=[], recipes=[])
+    db = Database(users=[], categories=[], recipes=[], ingredients=[])
     users = db.get_users()
 
     for user in users:
@@ -57,7 +57,7 @@ def register(username, email, password):
 
 # check if the username is unique
 def checkRegisterUsername(username):
-    db = Database(users=[], categories=[], recipes=[])
+    db = Database(users=[], categories=[], recipes=[], ingredients=[])
     users = db.get_users()
 
     username = username.lower()  # to make the username case insensitive
@@ -73,7 +73,7 @@ def checkRegisterUsername(username):
 
 def checkRegisterEmail(email):
 
-    db = Database(users=[], categories=[], recipes=[])
+    db = Database(users=[], categories=[], recipes=[], ingredients=[])
     users = db.get_users()
 
     # make the first part of the email case insensitive
@@ -94,7 +94,7 @@ def checkRegisterEmail(email):
 
 def get_user(email):
 
-    db = Database(users=[], categories=[], recipes=[])
+    db = Database(users=[], categories=[], recipes=[], ingredients=[])
     users = db.get_users()
 
     for user in users:
@@ -104,7 +104,7 @@ def get_user(email):
     return None
 
 def save_avatar(email, avatar):
-    db = Database(users=[], categories=[], recipes=[])
+    db = Database(users=[], categories=[], recipes=[], ingredients=[])
     users = db.get_users()
 
     for user in users:
@@ -117,7 +117,7 @@ def save_avatar(email, avatar):
     return False # return False if the avatar wasn't updated successfully
 
 def change_password(email, newPassword):
-    db = Database(users=[], categories=[], recipes=[])
+    db = Database(users=[], categories=[], recipes=[], ingredients=[])
     users = db.get_users()
 
     for user in users:
@@ -130,7 +130,7 @@ def change_password(email, newPassword):
     return False # return False if the password wasn't updated successfully
 
 def delete_account(email):
-    db = Database(users=[], categories=[], recipes=[])
+    db = Database(users=[], categories=[], recipes=[], ingredients=[])
     users = db.get_users()
 
     for user in users:

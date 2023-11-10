@@ -8,7 +8,7 @@ def get_categories():
     This function returns all the categories in the database
     '''
 
-    db = Database(users=[], categories=[], recipes=[])
+    db = Database(users=[], categories=[], recipes=[], ingredients=[])
     categories = db.get_categories()
     return categories
 
@@ -43,7 +43,7 @@ def checkCategory(_category_):
     This function checks if the category is unique and returns True if the category is unique and False if the category is not unique
     '''
 
-    db = Database(users=[], categories=[], recipes=[])
+    db = Database(users=[], categories=[], recipes=[], ingredients=[])
     categories = db.get_categories()
     print(categories)
 

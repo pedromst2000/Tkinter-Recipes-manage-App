@@ -6,11 +6,11 @@ User Stories - Requirements - Features
 
 -- Docstring for the functions => Refactor
 
+-- Add new branch for second version of the app
+
 --!! Add Recipe Image Feature !!-- => Feature
 -- add the image from other device to the directory of the app with the follow pattern name_of_the_recipe.jpg
 -- lower case and replace spaces with underscore
-
---!! Testing the recipes from one category !!-- => Debugging
 
 
 -- to be done in the next commits
@@ -35,8 +35,8 @@ User Stories - Requirements - Features
 - [X]  The regular user should have the possibility to delete his account on his profile page
 - []  An user should be able to add recipes to the catalog
 - []  An user should be able to delete his own recipes
-- []  A recipe should have atleast : title, preparation mode, estimated time of confection, image of the recipe, ingredients, category of the recipe (can have more than one category) --
-- []  A recipe should be associated atleast to one category --
+- [X]  A recipe should have atleast : title, preparation mode, estimated time of confection, image of the recipe, ingredients, category of the recipe (can have more than one category)
+- [x]  A recipe should be associated atleast to one category
 - []  An user can add , delete and edit his own recipes (only the owner of the recipe can edit or delete the recipe)
 - []  When the user add a recipe should be pending for approval of the admin
 - []  The admin should have a list with the recipes pending for approval in his profile (should be able to approve or delete the recipe)

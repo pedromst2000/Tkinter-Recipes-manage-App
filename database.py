@@ -4,25 +4,26 @@ class Database:
     users = []
     categories = []
     recipes = []
+    ingredients = []
     # favorites = []
     # comments = []
-    # ingredients = []
+
 
 # constructor
     def __init__(self,
                  users,
                  categories,
                  recipes,
-                 #   favorites,
+                ingredients  
+                #   favorites,
                  #     comments,
-                 #     ingredients
                  ):
         self.users = users
         self.categories = categories
         self.recipes = recipes
+        self.ingredients = ingredients
         # self.favorites = favorites
         # self.comments = comments
-        # self.ingredients = ingredients
 
 # methods
     def get_users(self):
@@ -159,3 +160,20 @@ class Database:
                 file.write(line)
 
         file.close()
+
+    def get_ingredients(self):
+
+        file = open("database/ingredients.txt", "r", encoding="utf-8")
+
+        lines = file.readlines()
+
+        for line in lines:
+            ingredient = line.split(";")
+            self.ingredients.append({
+                "recipeID": int(ingredient[0]),
+                "ingredient": ingredient[1].strip("\n")
+            })
+
+        file.close()
+
+        return self.ingredients
