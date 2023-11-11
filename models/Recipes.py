@@ -123,3 +123,64 @@ def get_recipes_by_ingredient(recipes, ingredient):
                                         recipes_by_ingredient.append(recipe)
 
         return recipes_by_ingredient
+
+def canUserEdit(logged_user, recipe_id):
+
+        '''
+        This function will check if the logged user can edit the recipe each means change or delete it
+        '''
+        db = Database(users=[], categories=[], recipes=[], ingredients=[])
+
+        recipes = db.get_recipes()
+
+        for recipe in recipes:
+                if (recipe["id"] == recipe_id):
+                        if (recipe["creator"] == logged_user):
+                                return True
+
+        return False
+
+def create_recipe(recipe):
+
+        '''
+        This function will create a new recipe
+        '''
+        recipe = Recipe(recipe["id"], recipe["createdAt"], recipe["category"], recipe["creator"], recipe["title"], recipe["prepMode"], recipe["estimatedTime"], recipe["image"], recipe["views"])
+
+        recipe.create_recipe(recipe)
+
+def update_recipe(recipe):
+
+        '''
+        This function will update a recipe
+        '''
+        recipe = Recipe(recipe["id"], recipe["createdAt"], recipe["category"], recipe["creator"], recipe["title"], recipe["prepMode"], recipe["estimatedTime"], recipe["image"], recipe["views"])
+
+        recipe.update_recipe(recipe)
+
+def delete_recipe(recipe):
+                                
+                '''
+                This function will delete a recipe
+                '''
+                recipe = Recipe(recipe["id"], recipe["createdAt"], recipe["category"], recipe["creator"], recipe["title"], recipe["prepMode"], recipe["estimatedTime"], recipe["image"], recipe["views"])
+        
+                recipe.delete_recipe(recipe)
+
+def count_views(recipe_id):
+
+        '''
+        This function will count the views of a recipe
+        '''
+        db = Database(users=[], categories=[], recipes=[], ingredients=[])
+
+        recipes = db.get_recipes()
+
+        for recipe in recipes:
+                if (recipe["id"] == recipe_id):
+                        recipe["views"] += 1
+                        recipe = Recipe(recipe["id"], recipe["createdAt"], recipe["category"], recipe["creator"], recipe["title"], recipe["prepMode"], recipe["estimatedTime"], recipe["image"], recipe["views"])
+                        recipe.update_recipe_views(recipe)
+                        return recipe["views"]
+
+        return None

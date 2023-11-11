@@ -91,6 +91,23 @@ class Database:
 
         return self.recipes
 
+    def get_ingredients(self):
+
+        file = open("database/ingredients.txt", "r", encoding="utf-8")
+
+        lines = file.readlines()
+
+        for line in lines:
+            ingredient = line.split(";")
+            self.ingredients.append({
+                "recipeID": int(ingredient[0]),
+                "ingredient": ingredient[1].strip("\n")
+            })
+
+        file.close()
+
+        return self.ingredients
+
     def create_user(self, user):  # add a new user to the database
 
         file = open("database/users.txt", "a", encoding="utf-8")
@@ -106,6 +123,42 @@ class Database:
 
         file.write(
             f"{category.category}\n")
+
+        file.close()
+
+    def create_recipe(self, recipe):  # add a new recipe to the database
+            
+            file = open("database/ingredients.txt", "a", encoding="utf-8")
+
+            for ingredient in recipe.ingredients:
+                file.write(
+                    f"{recipe.id};{ingredient}\n")
+            
+            file.close()
+
+            file = open("database/recipes.txt", "a", encoding="utf-8")
+
+            file.write(
+                f"{recipe.id};{recipe.createdAt};{recipe.category};{recipe.creator};{recipe.title};{recipe.prepMode};{recipe.estimatedTime};{recipe.image};{recipe.views}\n")
+            
+            file.close()
+
+    def update_recipe(self, recipe):  
+        file = open("database/recipes.txt", "r", encoding="utf-8")
+
+        lines = file.readlines()
+
+        file.close()
+
+        file = open("database/recipes.txt", "w+", encoding="utf-8")
+
+        for line in lines:
+
+            if line.split(";")[0] == recipe.id:
+                file.write(
+                    f"{recipe.id};{recipe.createdAt};{recipe.category};{recipe.creator};{recipe.title};{recipe.prepMode};{recipe.estimatedTime};{recipe.image};{recipe.views}\n")
+            else:
+                file.write(line)
 
         file.close()
 
@@ -161,19 +214,19 @@ class Database:
 
         file.close()
 
-    def get_ingredients(self):
+    def delete_recipe(self, recipe):
 
-        file = open("database/ingredients.txt", "r", encoding="utf-8")
+        file = open("database/recipes.txt", "r", encoding="utf-8")
 
         lines = file.readlines()
 
+        file.close()
+
+        file = open("database/recipes.txt", "w+", encoding="utf-8")
+
         for line in lines:
-            ingredient = line.split(";")
-            self.ingredients.append({
-                "recipeID": int(ingredient[0]),
-                "ingredient": ingredient[1].strip("\n")
-            })
+            if line.split(";")[0] != recipe.id:
+                file.write(line)
 
         file.close()
 
-        return self.ingredients

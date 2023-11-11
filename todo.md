@@ -12,7 +12,6 @@ User Stories - Requirements - Features
 -- add the image from other device to the directory of the app with the follow pattern name_of_the_recipe.jpg
 -- lower case and replace spaces with underscore
 
-
 -- to be done in the next commits
 
 - [X]  The users authenticate on the app with their account : email and password (login)
@@ -42,7 +41,9 @@ User Stories - Requirements - Features
 - []  The admin should have a list with the recipes pending for approval in his profile (should be able to approve or delete the recipe)
 - []  When the admin approve the recipe, the recipe should be available on the catalog
 - []  An user can create a list of his favorite recipes
-- []  In the user profile should be available the categories of the recipes
+- []  In the user profile should be available the categories of the recipes that most interest the user to receive notifications (eg: 
+    in the list contains the category dessert, the user should receive notifications of new recipes of the category dessert
+)
 - []  The user should be able to receive notifications of his favorite recipes when a new recipe is added to the catalog
 - []  The application should apresent the catalog of the recipes to the user (should apresent by default the most recent recipes) --
 - []  The user should be able to filter the recipes by category --

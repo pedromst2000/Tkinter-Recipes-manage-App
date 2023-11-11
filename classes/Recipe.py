@@ -23,4 +23,21 @@ class Recipe:
         self.views = views
 
     # methods
+    def create_recipe(self, recipe):
+            db = Database(users=[], categories=[], recipes=[], ingredients=[])
+            db.create_recipe(recipe)
+
+    def update_recipe_title(self, recipe):
+                db = Database(users=[], categories=[], recipes=[], ingredients=[])
+                db.update_recipe(recipe)
+
+    def update_recipe_views(self, recipe):
+                db = Database(users=[], categories=[], recipes=[], ingredients=[])
+                db.update_recipe(recipe)
+
+    def delete_recipe(self, recipe):
+                db = Database(users=[], categories=[], recipes=[], ingredients=[])
+                db.delete_recipe(recipe)
+
+
     
