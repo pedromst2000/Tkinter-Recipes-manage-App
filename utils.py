@@ -100,3 +100,5 @@ def manageVisibility(ImageTk, Image, canvasManagePassword, NW, inputPassword, X,
     else:
         # if the password input is empty, the canvas will be hidden and not showing any icon (either hide or show password icon)
         canvasManagePassword.place_forget()
+
+# def checkLengthTitle(title):

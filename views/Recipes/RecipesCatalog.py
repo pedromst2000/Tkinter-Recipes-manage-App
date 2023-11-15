@@ -1,14 +1,12 @@
 from tkinter import messagebox, Tk, Frame, TOP, X, NW, Canvas, Image, Button, Toplevel, ttk, Listbox
 from PIL import ImageTk, Image
 from classes.Navbar import NavbarWidget
-from models.Recipes import get_recipes
+from models.Recipes import *
 
 
 def RecipesCatalogView(selectedCategory, user, RecipesCategoryWindow):
 
     RecipesCatalogWindow = Toplevel(RecipesCategoryWindow)
-
-    print(selectedCategory)
 
     # hide the main window
     RecipesCategoryWindow.withdraw()
@@ -40,7 +38,34 @@ def RecipesCatalogView(selectedCategory, user, RecipesCategoryWindow):
 
     canvasRecipesCatalog.create_image(0, 0, anchor=NW, image=image)
 
-    print(get_recipes(selectedCategory))
+    recipes = get_recipes(selectedCategory)
+    default_recipes = get_recipes_by_date(recipes)
+    
+    # treeview to display the recipes with columns title category views data
+    recipesList = ttk.Treeview(canvasRecipesCatalog, columns=("title", "category", "views", "created date"), show="headings", height=20)
+    
+    recipesList.heading("title", text="Title")
+    recipesList.heading("category", text="Category")
+    recipesList.heading("views", text="Views")
+    recipesList.heading("created date", text="Created Date")
+
+    recipesList.column("title", width=150)
+    recipesList.column("category", width=150, anchor="center")
+    recipesList.column("views", width=150, anchor="center")
+    recipesList.column("created date", width=150, anchor="center")
+    
+    # insert the recipes into the treeview
+    for recipe in recipes:
+        recipesList.insert("", "end", values=(recipe["title"], recipe["category"], recipe["views"], recipe["createdAt"]))
+
+    recipesList.place(x=100, y=100)
+
+    # # add scrollbar to the treeview
+    # scrollbar = ttk.Scrollbar(canvasRecipesCatalog, orient="vertical", command=recipesList.yview)
+    # scrollbar.place(x=1200, y=100, height=400)
+
+    # recipesList.configure(yscrollcommand=scrollbar.set)
+
 
     RecipesCatalogWindow.protocol("WM_DELETE_WINDOW", lambda: [
                            RecipesCatalogWindow.destroy(), RecipesCategoryWindow.deiconify()])

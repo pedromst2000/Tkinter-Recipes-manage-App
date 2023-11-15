@@ -8,9 +8,11 @@ User Stories - Requirements - Features
 
 -- Add new branch for second version of the app
 
+-- add validation for the title of the recipe => Feature
+
 --!! Add Recipe Image Feature !!-- => Feature
--- add the image from other device to the directory of the app with the follow pattern name_of_the_recipe.jpg
--- lower case and replace spaces with underscore
+* add the image from other device to the directory of the app with the follow pattern name_of_the_recipe.jpg
+* lower case and replace spaces with underscore
 
 -- to be done in the next commits
 
@@ -45,7 +47,7 @@ User Stories - Requirements - Features
     in the list contains the category dessert, the user should receive notifications of new recipes of the category dessert
 )
 - []  The user should be able to receive notifications of his favorite recipes when a new recipe is added to the catalog
-- []  The application should apresent the catalog of the recipes to the user (should apresent by default the most recent recipes) --
+- [x]  The application should apresent the catalog of the recipes to the user (should apresent by default the most recent recipes)
 - []  The user should be able to filter the recipes by category --
 - []  The user should be able to filter the recipes by title --
 - []  The user should be able to filter the recipes by specific ingredient --

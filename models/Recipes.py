@@ -1,6 +1,6 @@
 from database import Database
 from classes.Recipe import Recipe
-import time
+import datetime
 
 def get_recipes(selectedCategory):
 
@@ -46,20 +46,19 @@ def get_recipes_by_date(recipes):
                # get the current recipes date
                 recipe_date = recipe["createdAt"]
 
-                # convert the date to a timestamp     
-                recipe_date = time.strptime(recipe_date, "%d/%m/%Y")
-                recipe_date = time.mktime(recipe_date)
-                 
-                        # append the recipe to the list
-                recipes_by_date.append(recipe)
-                 
-                        # sort the list by date without lambda
-                recipes_by_date.sort(key=lambda x: x["createdAt"], reverse=True ) # sort the list by date with lambda (anonymous function)
-             
-                 
+                # get the recipes from the last 3 mouths
+                last_3_mouths = datetime.datetime.now() - datetime.timedelta(days=90) ## timedelta allows to opperate with dates
+
+                # convert the recipe date to datetime
+                recipe_date = datetime.datetime.strptime(recipe_date, "%d/%m/%Y")
+                
+                # check if the recipe date is greater than the last 3 mouths
+
+                if (recipe_date > last_3_mouths):
+                        recipes_by_date.append(recipe)
+
         return recipes_by_date
-
-
+                
 def get_recipes_by_views(recipes, views):
 
         '''
@@ -149,14 +148,23 @@ def create_recipe(recipe):
 
         recipe.create_recipe(recipe)
 
-def update_recipe(recipe):
+def update_title(recipe):
+        
+                '''
+                This function will update the title of a recipe
+                '''
+                recipe = Recipe(recipe["id"], recipe["createdAt"], recipe["category"], recipe["creator"], recipe["title"], recipe["prepMode"], recipe["estimatedTime"], recipe["image"], recipe["views"])
+        
+                recipe.update_recipe_title(recipe)
 
-        '''
-        This function will update a recipe
-        '''
-        recipe = Recipe(recipe["id"], recipe["createdAt"], recipe["category"], recipe["creator"], recipe["title"], recipe["prepMode"], recipe["estimatedTime"], recipe["image"], recipe["views"])
-
-        recipe.update_recipe(recipe)
+def update_views(recipe):
+                
+  '''
+This function will update the views of a recipe
+'''
+  recipe = Recipe(recipe["id"], recipe["createdAt"], recipe["category"], recipe["creator"], recipe["title"], recipe["prepMode"], recipe["estimatedTime"], recipe["image"], recipe["views"])
+        
+  recipe.update_recipe_views(recipe) 
 
 def delete_recipe(recipe):
                                 
