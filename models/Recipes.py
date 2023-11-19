@@ -59,36 +59,7 @@ def get_recipes_by_date(recipes):
 
         return recipes_by_date
                 
-def get_recipes_by_views(recipes, views):
-
-        '''
-        This function will return the recipes by views
-        '''
-
-        recipes_by_views = []
-
-        for recipe in recipes:
-                if (recipe["views"] == views):
-                        recipes_by_views.append(recipe)
-
-        return recipes_by_views       
-
-
-def get_recipes_by_title(recipes, title):
-                
-                '''
-                This function will filter the recipes by title
-                '''
-
-                recipes_by_title = []
-
-                for recipe in recipes:
-                        if (recipe["title"] == title):
-                                recipes_by_title.append(recipe)
-
-
-                return recipes_by_title
-
+  
 
 def get_logged_user_recipes(recipes, logged_user):
 
@@ -116,11 +87,11 @@ def get_recipes_by_ingredient(recipes, ingredient):
 
         # joining the recipes with the ingredients
         for recipe in recipes:
-                for db_ingredient in db_ingredients:
-                        if (recipe["id"] == db_ingredient["recipeID"]):
-                                if (db_ingredient["ingredient"] == ingredient):
-                                        recipes_by_ingredient.append(recipe)
-
+         for db_ingredient in db_ingredients:
+                if (recipe["id"] == db_ingredient["recipeID"]):
+                        if (ingredient.lower() in db_ingredient["ingredient"].lower()):
+                                recipes_by_ingredient.append(recipe)
+                     
         return recipes_by_ingredient
 
 def canUserEdit(logged_user, recipe_id):
